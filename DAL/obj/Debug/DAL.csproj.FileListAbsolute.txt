@@ -5,3 +5,10 @@ E:\C#\Net\SDBISAS\DAL\obj\Debug\DAL.pdb
 E:\C#\Net\SDBISAS\DAL\bin\Debug\Model.dll
 E:\C#\Net\SDBISAS\DAL\bin\Debug\Model.pdb
 E:\C#\Net\SDBISAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\bin\Debug\DAL.dll
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\bin\Debug\DAL.pdb
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\bin\Debug\Model.dll
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\bin\Debug\Model.pdb
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\obj\Debug\DAL.dll
+D:\Users\Administrator\Source\Repos\SDBISAS\DAL\obj\Debug\DAL.pdb
