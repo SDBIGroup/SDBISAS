@@ -1,0 +1,9 @@
+E:\C#\Net\SDBISAS\BLL\bin\Debug\BLL.dll
+E:\C#\Net\SDBISAS\BLL\bin\Debug\BLL.pdb
+E:\C#\Net\SDBISAS\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\C#\Net\SDBISAS\BLL\obj\Debug\BLL.dll
+E:\C#\Net\SDBISAS\BLL\obj\Debug\BLL.pdb
+E:\C#\Net\SDBISAS\BLL\bin\Debug\DAL.dll
+E:\C#\Net\SDBISAS\BLL\bin\Debug\Model.dll
+E:\C#\Net\SDBISAS\BLL\bin\Debug\DAL.pdb
+E:\C#\Net\SDBISAS\BLL\bin\Debug\Model.pdb

@@ -1,0 +1,4 @@
+E:\C#\Net\SDBISAS\Model\bin\Debug\Model.dll
+E:\C#\Net\SDBISAS\Model\bin\Debug\Model.pdb
+E:\C#\Net\SDBISAS\Model\obj\Debug\Model.dll
+E:\C#\Net\SDBISAS\Model\obj\Debug\Model.pdb
