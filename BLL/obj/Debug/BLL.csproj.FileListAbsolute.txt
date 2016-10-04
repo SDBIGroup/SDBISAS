@@ -16,3 +16,12 @@ D:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\Model.pdb
 D:\Users\Administrator\Source\Repos\SDBISAS\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 D:\Users\Administrator\Source\Repos\SDBISAS\BLL\obj\Debug\BLL.dll
 D:\Users\Administrator\Source\Repos\SDBISAS\BLL\obj\Debug\BLL.pdb
+G:\SDBISAS\BLL\bin\Debug\BLL.dll
+G:\SDBISAS\BLL\bin\Debug\BLL.pdb
+G:\SDBISAS\BLL\bin\Debug\DAL.dll
+G:\SDBISAS\BLL\bin\Debug\Model.dll
+G:\SDBISAS\BLL\bin\Debug\DAL.pdb
+G:\SDBISAS\BLL\bin\Debug\Model.pdb
+G:\SDBISAS\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+G:\SDBISAS\BLL\obj\Debug\BLL.dll
+G:\SDBISAS\BLL\obj\Debug\BLL.pdb
