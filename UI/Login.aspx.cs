@@ -21,10 +21,12 @@ public partial class Login : System.Web.UI.Page
             DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabTeachers", "UserID", "UserPWD", TextBox1.Text, TextBox2.Text);
             if (dt.Rows.Count == 1)
             {
-                string role = dt.Rows[0]["Role"].ToString();
+                string role = dt.Rows[0]["role"].ToString();
+                string username = dt.Rows[0]["username"].ToString();
                 //保存用户数据
-                Session["uid"] = TextBox1.Text.Trim();  //去一下空格
-                Session["su"] = role;
+                Session["UserID"] = TextBox1.Text.Trim();  //去一下空格
+                Session["Username"] = username;
+                Session["Role"] = role;
                 switch (role)
                 {
                     case "1":

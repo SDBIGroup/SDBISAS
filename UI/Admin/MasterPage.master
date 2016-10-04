@@ -51,14 +51,14 @@
     <div id ="main">
         <div id="top">
 
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
         </div>
         <div id="content">
             <div id="left">
                 <asp:TreeView ID="TreeView1" runat="server" MaxDataBindDepth="2">
                 </asp:TreeView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]">
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]">
-
                 </asp:SqlDataSource>
             </div>
             <div id="right">
