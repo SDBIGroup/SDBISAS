@@ -54,14 +54,12 @@
         </div>
         <div id="content">
             <div id="left">
-                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XmlDataSource1">
-                    <DataBindings>
-                        <asp:TreeNodeBinding DataMember="siteRoot" TextField="title" />
-                        <asp:TreeNodeBinding DataMember="siteMapNode" TextField="title" />
-                        <asp:TreeNodeBinding DataMember="siteMapSubNode" NavigateUrlField="url" TextField="title" />
-                    </DataBindings>
+                <asp:TreeView ID="TreeView1" runat="server" MaxDataBindDepth="2">
                 </asp:TreeView>
-                <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/Admin/AdminXMLFile.xml"></asp:XmlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]">
+
+                </asp:SqlDataSource>
             </div>
             <div id="right">
                  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">

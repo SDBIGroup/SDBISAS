@@ -10,6 +10,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            loadData2TreeView();
+        }
+    }
+
+    private void loadData2TreeView()
+    {
         //测试无法转换为DataSet
         //DataSet ds = (DataSet)SqlDataSource1.Select(DataSourceSelectArguments.Empty);
         //dt = ds.Tables[0];
@@ -36,11 +44,5 @@ public partial class MasterPage : System.Web.UI.MasterPage
             }
         }
         this.TreeView1.Nodes.Add(root);//将根节点添加到treeview中（就将根节点及子节点都装到了treeview中）
-
-    }
-
-    protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-    {
-
     }
 }
