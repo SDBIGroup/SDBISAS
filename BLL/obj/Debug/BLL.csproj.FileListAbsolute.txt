@@ -34,3 +34,12 @@ E:\C#\AspNet\SDBISASGroup\BLL\bin\Debug\Model.pdb
 E:\C#\AspNet\SDBISASGroup\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 E:\C#\AspNet\SDBISASGroup\BLL\obj\Debug\BLL.dll
 E:\C#\AspNet\SDBISASGroup\BLL\obj\Debug\BLL.pdb
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\BLL.dll
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\BLL.pdb
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\DAL.dll
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\Model.dll
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\DAL.pdb
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\bin\Debug\Model.pdb
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\obj\Debug\BLL.dll
+C:\Users\Administrator\Source\Repos\SDBISAS\BLL\obj\Debug\BLL.pdb

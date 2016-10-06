@@ -48,7 +48,7 @@ namespace DAL
         /// <returns>DT数据集</returns>
         public static DataSet GetDataSet(string strSQL)
         {
-            string connString = ConfigurationManager.ConnectionStrings["AttendanceSystemConnString"].ConnectionString;
+            string connString = ConfigurationManager.ConnectionStrings["myConn"].ConnectionString;
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
 
