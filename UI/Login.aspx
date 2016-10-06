@@ -21,7 +21,7 @@
 </head>
 <body>
       <form id="form1" runat="server">
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        
     <div class="login">
         <div class="box png">
             <div class="logo"></div>
@@ -42,7 +42,6 @@
         <div class="air-balloon ab-1 png"></div>
         <div class="air-balloon ab-2 png"></div>
         <div class="air-balloon ab-1 png">
-            <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         </div>
         <div class="footer"></div>
     </div>
@@ -50,6 +49,12 @@
     <script type="text/javascript" src="jslib/jQuery.js"></script>
     <script type="text/javascript" src="js/fun.base.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
+
+          <p>
+              &nbsp;</p>
+          <p>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+          </p>
 
     </form>
     </body>
