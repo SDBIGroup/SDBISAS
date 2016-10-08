@@ -12,40 +12,28 @@
             padding: 0;
         }
 
-        #main {
-            width: 100%;
-            height: 100%;
-            background-color: #aaa;
+         #main{
+            width:100%;
+            height:100%;
+			background-image:url(images/1.jpg);
+			background-attachment:fixed;
+           
         }
-
-        #top {
-            width: 100%;
-            height: 100px;
-            background-color: #c1c1e5;
+        #top{
+            width:100%;
+            height:100px;
+			
+           
         }
-
-        #content {
-            width: 100%;
-            height: 600px;
+        #content{
+            width:100%;
+            height:600px;
         }
-
-        #left {
-            width: 150px;
-            height: 100%;
-            background-color: aqua;
-            float: left;
-        }
-
-        #right {
-            width: 650px;
-            height: 100%;
-            float: left;
-        }
-
-        #foot {
-            width: 100%;
-            height: 40px;
-            background-color: #c1c1e5;
+        #left{
+            width:150px;
+            height:100%;
+			background-image:url(images/2.jpg); 
+            float:left;
         }
     </style>
 

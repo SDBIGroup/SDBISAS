@@ -11,7 +11,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Label1.Visible = false;
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -51,11 +51,13 @@ public partial class Login : System.Web.UI.Page
             }
             else
             {
+                Label1.Visible = true;
                 Label1.Text = "用户名或密码错误！";
             }
         }
         else
         {
+            Label1.Visible = true;
             Label1.Text = "请完整填写用户名或密码";
         }
     }
