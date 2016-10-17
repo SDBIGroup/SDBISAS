@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="assets/css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
@@ -18,18 +18,18 @@
         #main {
             width: 100%;
             height: 100%;
-            background-color: #aaa;
+           
         }
 
         #top {
             width: 100%;
             height: 100px;
-            background-color: #c1c1e5;
+           
         }
 
         #content {
-            width: 100%;
-            height: 600px;
+	width: 100%;
+	height: 600px;
         }
 
          #left{
@@ -38,14 +38,14 @@
 			border:1px solid white;
 				border-radius: 5px;
 				/**background-color:rgb(0,152,50);**/
-				background:url(assets/img/giftly.png); no-repeat center center scroll;
+				background:url(assets/img/bg8.jpg); no-repeat center center scroll;
 				opacity: 0.5;
-				filter:alpha(opacity=70);
+				filter:alpha(opacity=50);
             float:left;
         }
 
         #right {
-            width: 650px;
+            width: 800px;
             height: 100%;
             float: left;
         }
@@ -53,7 +53,7 @@
         #foot {
             width: 100%;
             height: 40px;
-            background-color: #c1c1e5;
+           
         }
     </style>
 
@@ -74,12 +74,15 @@
                 <div id="right">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
-                       <div class="wrap-fluid">
+                   
+<div  class="sub-mainbox">
+</div>
+    
         <div class="container-fluid paper-wrap bevel tlbr">
- <%-- 这里是右边显示框 --%>
+
 </div>
-</div>
-                </div>
+
+                
             </div>
             <div id="foot">
             </div>
@@ -87,3 +90,5 @@
     </form>
 </body>
 </html>
+
+
