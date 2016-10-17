@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+     <link rel="stylesheet" href="css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <style type="text/css">
@@ -29,11 +30,16 @@
             height: 600px;
         }
 
-        #left {
-            width: 150px;
-            height: 100%;
-            background-color: aqua;
-            float: left;
+       #left{
+            width:150px;
+            height:100%;
+			border:1px solid white;
+				border-radius: 5px;
+				/**background-color:rgb(0,152,50);**/
+				background:url(assets/img/giftly.png); no-repeat center center scroll;
+				opacity: 0.5;
+				filter:alpha(opacity=70);
+            float:left;
         }
 
         #right {
@@ -67,6 +73,11 @@
                 <div id="right">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
+                       <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+ <%-- 这里是右边显示框 --%>
+</div>
+</div>
                 </div>
             </div>
             <div id="foot">
