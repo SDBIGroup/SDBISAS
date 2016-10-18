@@ -14,6 +14,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (!IsPostBack)
         {
             loadData2TreeView();
+            Label1.Text = Session["Username"].ToString() + "<br> " + Application["Online"].ToString() + "人";
         }
     }
 
