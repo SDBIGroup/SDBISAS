@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link rel="stylesheet" href="../css/style.css"/>
+     <link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
@@ -40,7 +40,7 @@
 			border:1px solid white;
 				border-radius: 5px;
 				/**background-color:rgb(0,152,50);**/
-				background:url(../images/bg8.jpg) no-repeat;
+				background:url(../images/bg8.jpg); no-repeat center center scroll;
 				opacity: 0.5;
 				filter:alpha(opacity=50);
             float:left;
@@ -92,7 +92,6 @@
             <div id="foot">
             </div>
         </div>
-            </div>
     </form>
 </body>
 </html>

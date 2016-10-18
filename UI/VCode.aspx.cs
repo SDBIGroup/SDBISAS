@@ -29,6 +29,6 @@ public partial class Test_Code : System.Web.UI.Page
         g.DrawString(strCode, f, Brushes.AliceBlue, 40, 10,fat);
         bmp.Save(Response.OutputStream, ImageFormat.Gif);
         g.Dispose();
-        Session["VCode"] = strCode;
+        Session["code"] = strCode;
     }
 }

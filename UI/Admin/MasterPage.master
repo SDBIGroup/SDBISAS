@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link rel="stylesheet" href="../css/style.css"/>
+     <link rel="stylesheet" href="../css/style.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
@@ -39,7 +39,7 @@
 			border:1px solid white;
 				border-radius: 5px;
 				/**background-color:rgb(0,152,50);**/
-				background:url(../images/bg8.jpg) no-repeat ;
+				background:url(../images/bg8.jpg); no-repeat center center scroll;
 				opacity: 0.5;
 				filter:alpha(opacity=50);
             float:left;
@@ -71,12 +71,12 @@
             </div>
             <div id="content">
                 <div id="left">
-                    <asp:TreeView ID="TreeView1" runat="server" MaxDataBindDepth="2">
+                    <asp:TreeView ID="TreeView2" runat="server" MaxDataBindDepth="2">
                     </asp:TreeView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]"></asp:SqlDataSource>
                 </div>
                 <div id="right">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                     </asp:ContentPlaceHolder>
                    
 <div  class="sub-mainbox">
@@ -91,7 +91,6 @@
             <div id="foot">
             </div>
         </div>
-            </div>
     </form>
 </body>
 </html>

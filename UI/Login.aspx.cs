@@ -18,49 +18,41 @@ public partial class Login : System.Web.UI.Page
     {
         if (value_1.Text.Length != 0 && value_2.Text.Length != 0)
         {
-            if (Session["VCode"].ToString() == value_3.Text.ToString())
+            DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabTeachers", "User_ID", "User_PWD", value_1.Text, value_2.Text);
+            if (dt.Rows.Count == 1)
             {
-                DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabTeachers", "User_ID", "User_PWD", value_1.Text, value_2.Text);
-                if (dt.Rows.Count == 1)
+                string role = dt.Rows[0]["role"].ToString();
+                string username = dt.Rows[0]["username"].ToString();
+                //保存用户数据
+                Session["UserID"] = value_1.Text.Trim();  //去一下空格
+                Session["Username"] = username;
+                Session["Role"] = role;
+                switch (role)
                 {
-                    string role = dt.Rows[0]["role"].ToString();
-                    string username = dt.Rows[0]["username"].ToString();
-                    //保存用户数据
-                    Session["UserID"] = value_1.Text.Trim();  //去一下空格
-                    Session["Username"] = username;
-                    Session["Role"] = role;
-                    switch (role)
-                    {
-                        case "1":
-                            //页面跳转
-                            Response.Redirect("./Admin/Default.aspx");
-                            break;
-                        case "2":
-                            //页面跳转
-                            Response.Redirect("./Leader/Default.aspx");
-                            break;
-                        case "3":
-                            //页面跳转
-                            Response.Redirect("./Secretary/Default.aspx");
-                            break;
-                        case "4":
-                            //页面跳转
-                            Response.Redirect("./Teacher/Default.aspx");
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    Label1.Visible = true;
-                    Label1.Text = "用户名或密码错误！";
+                    case "1":
+                        //页面跳转
+                        Response.Redirect("./Admin/Default.aspx");
+                        break;
+                    case "2":
+                        //页面跳转
+                        Response.Redirect("./Leader/Default.aspx");
+                        break;
+                    case "3":
+                        //页面跳转
+                        Response.Redirect("./Secretary/Default.aspx");
+                        break;
+                    case "4":
+                        //页面跳转
+                        Response.Redirect("./Teacher/Default.aspx");
+                        break;
+                    default:
+                        break;
                 }
             }
             else
             {
                 Label1.Visible = true;
-                Label1.Text = "验证码错误";
+                Label1.Text = "用户名或密码错误！";
             }
         }
         else

@@ -31,8 +31,6 @@
 
         Application.Lock();
         Application["Online"] = (int)Application["Online"] + 1;
-
-        Session["VCode"] = "";
     }
 
     void Session_End(object sender, EventArgs e)
