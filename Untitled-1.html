@@ -1,52 +1,47 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link rel="stylesheet" href="../css/style.css">
+     <link rel="stylesheet" href="UI/css/style.css.lnk">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-
     <style type="text/css">
         html body {
             margin: 0;
             padding: 0;
         }
 
-
         #main {
             width: 100%;
-            height: 740px;
-           background:url(../images/1.jpg) no-repeat;
-           
+            height: 100%;
+            background-color: #aaa;
         }
 
         #top {
             width: 100%;
             height: 100px;
-            background:url(../images/2.png) no-repeat center;
-           
+            background-color: #c1c1e5;
         }
 
         #content {
-	width: 100%;
-	height: 600px;
+            width: 100%;
+            height: 600px;
         }
 
-        #left{
-            width:14.9%;
+       #left{
+            width:150px;
             height:100%;
 			border:1px solid white;
 				border-radius: 5px;
 				/**background-color:rgb(0,152,50);**/
-				background:url(../images/bg8.jpg); no-repeat center center scroll;
-				opacity: 0.5;
-				filter:alpha(opacity=50);
+				background:url(UI/images/bg3.png); no-repeat center center scroll;
+				opacity: 0.3;
+				filter:alpha(opacity=70);
             float:left;
         }
 
         #right {
-            width:1312px;
+            width: 650px;
             height: 100%;
             float: left;
         }
@@ -54,9 +49,7 @@
         #foot {
             width: 100%;
             height: 40px;
-             background:url(../images/bg5.jpg) no-repeat;
-             float:left;
-           
+            background-color: #c1c1e5;
         }
     </style>
 
@@ -67,32 +60,27 @@
     <form id="form1" runat="server">
         <div id="main">
             <div id="top">
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </div>
             <div id="content">
                 <div id="left">
                     <asp:TreeView ID="TreeView1" runat="server" MaxDataBindDepth="2">
                     </asp:TreeView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Secretary]"></asp:SqlDataSource>
+
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Teacher]"></asp:SqlDataSource>
                 </div>
                 <div id="right">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
-                   
-<div  class="sub-mainbox">
-</div>
-    
+                       <div class="wrap-fluid">
         <div class="container-fluid paper-wrap bevel tlbr">
-
+ <%-- 这里是右边显示框 --%>
 </div>
-
-                
-            </div>
+</div>
                 </div>
+            </div>
             <div id="foot">
             </div>
         </div>
     </form>
 </body>
 </html>
-
