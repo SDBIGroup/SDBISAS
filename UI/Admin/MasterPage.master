@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link rel="stylesheet" href="../css/style.css">
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
@@ -17,47 +17,53 @@
         #main {
             width: 100%;
             height: 740px;
-           background:url(../images/1.jpg) no-repeat;
-           
+            background: url(../images/1.jpg) no-repeat;
         }
 
         #top {
             width: 100%;
-            height: 100px;
-            background:url(../images/2.png) no-repeat center;
-           
+            height: 130px;
+            background: url(../images/2.png) no-repeat center;
         }
 
         #content {
-	width: 100%;
-	height: 600px;
+            width: 100%;
+            height: 600px;
         }
 
-         #left{
-            width:14.9%;
-            height:100%;
-			border:1px solid white;
-				border-radius: 5px;
-				/**background-color:rgb(0,152,50);**/
-				background:url(../images/bg8.jpg); no-repeat center center scroll;
-				opacity: 0.5;
-				filter:alpha(opacity=50);
-            float:left;
+        #left {
+            width: 14.9%;
+            height: 100%;
+            border: 1px solid white;
+            border-radius: 5px;
+            /**background-color:rgb(0,152,50);**/
+            background: url(../images/bg8.jpg) no-repeat center center scroll;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            float: left;
         }
 
         #right {
-            width:1312px;
+            width: 80%;
             height: 100%;
             float: left;
+            margin: 0 auto;
+            line-height: 100%;
         }
 
         #foot {
             width: 100%;
             height: 40px;
-             background:url(../images/bg5.jpg) no-repeat;
-             float:left;
-           
+            background: url(../images/bg5.jpg) no-repeat;
+            float: left;
         }
+
+        .online {
+            float: right;
+            margin-top: 60px;
+            margin-right: 20px;
+        }
+
     </style>
 
     <%--<asp:ContentPlaceHolder id="head" runat="server">
@@ -67,7 +73,7 @@
     <form id="form2" runat="server">
         <div id="main">
             <div id="top">
-                <asp:Label ID="Label1" runat="server" Text="Label" ></asp:Label>
+                <asp:Label ID="Label1" runat="server" class="online"></asp:Label>
             </div>
             <div id="content">
                 <div id="left">
@@ -78,19 +84,17 @@
                 <div id="right">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                     </asp:ContentPlaceHolder>
-                   
-<div  class="sub-mainbox">
-</div>
-    
-        <div class="container-fluid paper-wrap bevel tlbr">
 
-</div>
+                    <div class="sub-mainbox">
+                    </div>
 
-                
+                    <div class="container-fluid paper-wrap bevel tlbr">
+                    </div>
+
+                </div>
+                <div id="foot">
+                </div>
             </div>
-            <div id="foot">
-            </div>
-        </div>
     </form>
 </body>
 </html>

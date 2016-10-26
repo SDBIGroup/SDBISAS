@@ -13,7 +13,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (!IsPostBack)
         {
             loadData2TreeView();
-            Label1.Text = Session["Username"].ToString() + "<br> " + Application["Online"].ToString() + "人";
+            Label1.Text = "当前用户:" + Session["Username"].ToString() + "<br> 当前在线人数：" + Application["Online"].ToString() + "人";
         }
     }
 
