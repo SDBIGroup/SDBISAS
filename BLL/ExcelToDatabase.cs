@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BLL
 {
     /// <summary>
@@ -52,19 +53,26 @@ namespace BLL
             }
         }
 
-        //TODO
+        /// <summary>
+        /// 读取Excel表，后续进行写入到数据库
+        /// </summary>
+        /// <param name="fileName">文件的完整路径</param>
+        /// <param name="identity">表名【非工作簿名】</param>
+        /// <returns></returns>
         public static string ToSQLServer(string fileName, string identity)
         {
             if (identity == "TabTeachers" || identity == "TabOtherTeachers")
             {
-                //return DAL.ExcelToSQLServer.ReadTeachersExcel(fileName, identity);
+                return DAL.ExcelToSQLServer.ReadTeachersExcel(fileName, identity);
+            }
+            else if (identity == "TabCalendar")
+            {
+                return DAL.ExcelToSQLServer.ReadCalendarExcel(fileName, identity);
             }
             else
             {
-
+                return DAL.ExcelToSQLServer.ReadCoursesExcel(fileName, identity);
             }
-
-            return "";
         }
     }
 }
