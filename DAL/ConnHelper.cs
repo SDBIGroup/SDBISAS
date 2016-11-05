@@ -93,6 +93,12 @@ namespace DAL
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
 
+
+            DataTable dt = new DataTable();
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);
+            bulkCopy.DestinationTableName = "TempUserInfo";
+            bulkCopy.WriteToServer(dt);
+
             SqlCommand cmd = new SqlCommand(strSQL, conn);
             try
             {
