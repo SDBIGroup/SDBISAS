@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
@@ -163,6 +161,7 @@ namespace DAL
             conn.Open();
 
             List<string> SheetNameList = new List<string>();
+            //获取表结构信息，获取EXCEL表中的SHEET名称
             DataTable dtExcelSchema = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
             string SheetName = "";
             for (int i = 0; i < dtExcelSchema.Rows.Count; i++)
@@ -217,7 +216,9 @@ namespace DAL
             ReadExcelToDataSet(fileName, strSQL);
             if (CheckExcelTableCourses())
             {
-                CoursesTOSQLServer(identity);
+                //TODO...
+                DataTable dt;
+                CoursesTOSQLServer(dt, "TabAllCourses");
                 return "文件导入成功";
             }
             else
@@ -289,36 +290,9 @@ namespace DAL
         /// 数据来源为全局变量DS集合
         /// </summary>
         /// <param name="identity">表名【非工作簿名】</param>
-        public static void CoursesTOSQLServer(string identity)
+        public static void CoursesTOSQLServer(DataTable dt, string identity)
         {
-            string str1 = ConfigurationManager.ConnectionStrings["SdbiAttentionSystemConnectionString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(str1);
-            conn.Open();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            StringBuilder strconn = new StringBuilder();
-            List<string> str = new List<string>();
-
-            for (int i = 0; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
-            {
-                str = SplitTeacherIDAndTeacherName(ds.Tables["ExcelInfo"].Rows[i].ItemArray[1].ToString());
-                strconn.Append("insert into TabAllCourses(TeacherDapartment,TeacherID,TeacherName,TimeAndArea,Course,t1,t2,t3,Class,StudentDepartment,StudentID,StudentName,t4,t5,t6,t7) values(");
-                strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[0].ToString() + "','" + str[0] + "','" + str[1] + "'");
-                for (int j = 2; j <= 14; j++)
-                {
-                    strconn.Append(",'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "'");
-                }
-                strconn.Append(")");
-                string str2 = strconn.ToString();
-                cmd.CommandText = str2;
-                str2 = string.Empty;
-                cmd.ExecuteNonQuery();  //执行SQL语句，插入一行数据到数据库
-                strconn.Remove(0, strconn.Length);
-                System.GC.Collect();
-            }
-            conn.Close();
-            conn.Dispose();
+            ConnHelper.SQLBulkCopy(dt, identity);
         }
 
         /// <summary>
@@ -347,28 +321,7 @@ namespace DAL
         /// <param name="identity">表名【非工作簿名】</param>
         public static void CalenderToSQLServer(string identity)
         {
-            string str1 = ConfigurationManager.ConnectionStrings["SdbiAttentionSystemConnectionString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(str1);
-            conn.Open();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            StringBuilder strconn = new StringBuilder();
-            for (int i = 0; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
-            {
-                strconn.Append("insert into " + identity + "(WeekNumber,StartWeek,EndWeek) values(");
-                for (int j = 0; j <= 1; j++)
-                {
-                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
-                }
-                strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[2] + "')");
-                string str2 = strconn.ToString();
-                cmd.CommandText = str2;
-                cmd.ExecuteNonQuery();
-                strconn.Remove(0, strconn.Length);
-            }
-            conn.Close();
-            conn.Dispose();
+            ConnHelper.SQLBulkCopy(ds.Tables["ExcelInfo"], identity);
         }
 
         /// <summary>
