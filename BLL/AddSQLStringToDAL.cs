@@ -26,9 +26,9 @@ namespace BLL
             return ConnHelper.GetDataTable(strSQL);
         }
 
-        public static DataTable GetDTBySQL(string colum,string Tname)
+        public static DataTable GetDTBySQL(string colum, string Tname)
         {
-            string strSQL = SQLFactory.BuildSQLSelectString(colum,Tname);
+            string strSQL = SQLFactory.BuildSQLSelectString(colum, Tname);
             return ConnHelper.GetDataTable(strSQL);
         }
 
@@ -39,10 +39,17 @@ namespace BLL
         /// <param name="strTable">表名</param>
         /// <param name="name">字段名【列名】</param>
         /// <returns>含有数据的list</returns>
-        public static List<string> GetDistinctString(string strTable,string name)
+        public static List<string> GetDistinctString(string strTable, string name)
         {
             string strSQL = SQLFactory.BuildSQLSelectString(strTable, name);
             return ConnHelper.GetDistinceColoum(strSQL, name);
+        }
+
+        public static DataTable GetDTBySQL4(string sql)
+        {
+            //DataSet ds = ConnHelper.GetDataSet(sql);
+            DataTable dt = ConnHelper.GetDataTable(sql);
+            return dt;
         }
     }
 }
