@@ -7,7 +7,17 @@
     <asp:FileUpload ID="FileUpload1" runat="server" />
     <asp:Button ID="btnImportTeachers" runat="server" Text="导入" OnClick="btnImportTeachers_Click" />
     <br />
-    <asp:dropdownlist runat="server" ID="ddlDepartmentName" OnSelectedIndexChanged="ddlDepartmentName_SelectedIndexChanged"></asp:dropdownlist>
+    <asp:dropdownlist runat="server" ID="ddlDepartmentName" OnSelectedIndexChanged="ddlDepartmentName_SelectedIndexChanged">
+        <asp:ListItem>教务处</asp:ListItem>
+        <asp:ListItem>信息工程系</asp:ListItem>
+        <asp:ListItem>会计系</asp:ListItem>
+        <asp:ListItem>经济管理系</asp:ListItem>
+        <asp:ListItem>食品工程系</asp:ListItem>
+        <asp:ListItem>商务外语系</asp:ListItem>
+        <asp:ListItem>机械工程系</asp:ListItem>
+        <asp:ListItem>基础教学部</asp:ListItem>
+        <asp:ListItem>建筑工程系</asp:ListItem>
+    </asp:dropdownlist>
     <asp:FileUpload ID="filecourse" runat="server" />
     <asp:Button ID="btnImportCourse" runat="server" Text="导入" OnClick="btnImportCourse_Click" />
     <br />

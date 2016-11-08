@@ -216,8 +216,7 @@ namespace DAL
             ReadExcelToDataSet(fileName, strSQL);
             if (CheckExcelTableCourses())
             {
-                //TODO...
-                DataTable dt;
+                DataTable dt = SplitString.SplitDT(ds.Tables["ExcelInfo"]);
                 CoursesTOSQLServer(dt, "TabAllCourses");
                 return "文件导入成功";
             }

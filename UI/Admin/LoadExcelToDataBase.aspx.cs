@@ -14,10 +14,10 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         if (!IsPostBack)
         {
             //strTest.Length == 0 这种方式的执行效率最高
-            if (Session["uid"].ToString().Length == 0)
+            if (Session["UserID"].ToString().Length == 0 )
             {
                 //如果没有登陆，重定向到登陆页面
-                Response.Redirect("~//Default.aspx");
+                //Response.Redirect("~//Login.aspx");
             }
             else
             {
@@ -61,7 +61,6 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         Clear();
         string department = "";
         department = ddlDepartmentName.SelectedItem.ToString();
-        //todo...
         string filePath = Upload(filecourse);
         if (filePath != null && filePath.Length != 0)
         {

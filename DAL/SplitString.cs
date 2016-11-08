@@ -9,7 +9,7 @@ namespace DAL
 {
     public class SplitString
     {
-        public DataTable SplitDT(DataTable oldDt)
+        public static DataTable SplitDT(DataTable oldDt)
         {
             DataTable newDt = new DataTable();
 
@@ -41,7 +41,7 @@ namespace DAL
             return newDt;
         }
 
-        private object getTime(string v)
+        private static object getTime(string v)
         {
             string time = "";
             string[] weeks = v.Split('@');
@@ -56,7 +56,7 @@ namespace DAL
             return time;
         }
 
-        private string getWeek(string v)
+        private static string getWeek(string v)
         {
             string week = "";
             string[] weeks = v.Split('@');
@@ -71,14 +71,14 @@ namespace DAL
             return week;
         }
 
-        private string getID(string str)
+        private static string getID(string str)
         {
             //[2006013612]邢茹
             string[] id = str.Split(']');
             return id[0].Substring(1, id[0].Length - 1);
         }
 
-        private string getCourses(string str)
+        private static string getCourses(string str)
         {
             //[361670]PHP程序设计(4)
             string[] s = str.Split(']');
@@ -88,7 +88,7 @@ namespace DAL
             return s1[0];
         }
 
-        private string getWeekRange(string str)
+        private static string getWeekRange(string str)
         {
             string[] two = null;
             string result = "";
@@ -174,7 +174,7 @@ namespace DAL
         /// <param name="ranges"></param>
         /// <param name="flag">单双周判断位</param>
         /// <returns></returns>
-        private string WeekBlend(string[] ranges, int flag)
+        private static string WeekBlend(string[] ranges, int flag)
         {
             string result = "";
             for (int i = 0; i < ranges.Length; i++)
