@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnHelper.cs" />
+    <Compile Include="ExcelToSQLServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitString.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

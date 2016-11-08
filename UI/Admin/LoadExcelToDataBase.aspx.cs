@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+using System.IO;
 
 public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
 {
@@ -61,7 +62,15 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         string department = "";
         department = ddlDepartmentName.SelectedItem.ToString();
         //todo...
-        lbMessage2.Text = ExcelToDatabase.CheckFile(filecourse.ToString(), department);
+        string filePath = Upload(filecourse);
+        if (filePath != null && filePath.Length != 0)
+        {
+            lbMessage2.Text = ExcelToDatabase.CheckFile(filePath, department);
+        }
+        else
+        {
+            lbMessage2.Text = "您选择的文件不符合规范";
+        }
     }
 
     /// <summary>
@@ -114,6 +123,33 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         for (int i = 0; i < strList.Count; i++)
         {
             List<string> strDD = new List<string>();
+        }
+    }
+
+    /// <summary>
+    /// 上传Excel到服务器，返回服务器中的路径
+    /// </summary>
+    /// <param name="fuload"></param>
+    /// <returns></returns>
+    private string Upload(FileUpload fuload)
+    {
+        //获取选择文件的扩展名
+        string fileExtenSion = Path.GetExtension(fuload.FileName);
+        //检测文件扩展名(格式)
+        if (fileExtenSion.ToLower() != ".xls" && fileExtenSion.ToLower() != ".xlsx")
+        {
+            return null;
+        }
+        try
+        {
+            string FileName = Server.MapPath("./") + "App_Data/" + Path.GetFileName(fuload.FileName);
+            //上传文件到指定目录
+            fuload.SaveAs(Server.MapPath(FileName));
+            return FileName;
+        }
+        catch
+        {
+            return null;
         }
     }
 }

@@ -12,7 +12,19 @@ namespace DAL
     public class ConnHelper
     {
         /// <summary>
-        /// 查询指定的表中的指定字段
+        /// 获取链接SQL Server数据库的打开链接
+        /// </summary>
+        /// <returns>SqlConnection对象</returns>
+        private static SqlConnection getConn()
+        {
+            string connString = ConfigurationManager.ConnectionStrings["AttendanceSystemConnString"].ConnectionString;
+            return new SqlConnection(connString);
+        }
+
+        /// <summary>
+        /// 查询指定的表中的指定字段中的数据
+        /// 每一行的数据打包成一个list
+        /// 将DT转换成List
         /// </summary>
         /// <param name="strSQL">查询的SQL语句</param>
         /// <param name="str1">字段名</param>
@@ -48,8 +60,7 @@ namespace DAL
         /// <returns>DT数据集</returns>
         public static DataSet GetDataSet(string strSQL)
         {
-            string connString = ConfigurationManager.ConnectionStrings["myConn"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connString);
+            SqlConnection conn = getConn();
             conn.Open();
 
             SqlDataAdapter da = new SqlDataAdapter(strSQL, conn);
@@ -68,8 +79,7 @@ namespace DAL
         /// <returns>如果有---第一行第一列，如果没有---返回“0”</returns>
         public static int GetRecordCount(string strSQL)
         {
-            string connString = ConfigurationManager.ConnectionStrings["AttendanceSystemConnString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connString);
+            SqlConnection conn = getConn();
             conn.Open();
 
             SqlCommand cmd = new SqlCommand(strSQL, conn);
@@ -89,9 +99,14 @@ namespace DAL
         /// <returns>是否成功(异常)</returns>
         public static bool ExecuteNoneQueryOperation(string strSQL)
         {
-            string connString = ConfigurationManager.ConnectionStrings["AttendanceSystemConnString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(connString);
+            SqlConnection conn = getConn();
             conn.Open();
+
+
+            DataTable dt = new DataTable();
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);
+            bulkCopy.DestinationTableName = "TempUserInfo";
+            bulkCopy.WriteToServer(dt);
 
             SqlCommand cmd = new SqlCommand(strSQL, conn);
             try
@@ -120,6 +135,28 @@ namespace DAL
             //字符串比较不区分大小写
             ds.CaseSensitive = false;
             return ds.Tables[0];
+        }
+
+        /// <summary>
+        /// 批量导入到数据库
+        /// 表结构要相同【结构】
+        /// </summary>
+        /// <param name="dt">源表--内存中的表</param>
+        /// <param name="dtName">要导入的远程数据库的表名</param>
+        public static void SQLBulkCopy(DataTable dt, string dtName)
+        {
+            //using内的对象在代码块结束后会自动销毁，所以conn不用close
+            using (SqlConnection conn = getConn())
+            {
+                conn.Open();
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(conn))
+                {
+                    bulkCopy.DestinationTableName = dtName;
+                    //假设数据库和Excel表的列名不同，内存列名映射到数据库的列名
+                    //bulkCopy.ColumnMappings.Add("loct", "serve");
+                    bulkCopy.WriteToServer(dt);
+                }
+            }
         }
     }
 }
