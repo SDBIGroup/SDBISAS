@@ -33,11 +33,11 @@ namespace BLL
                     }
 
                     //获取选择文件的扩展名
-                    string fileExtenSion = fileName.Substring(fileName.LastIndexOf(".") + 1);
+                    string fileExtenSion = fileName.Substring(fileName.LastIndexOf(".") + 1, 3);
                     //检测文件扩展名(格式)
-                    if (fileExtenSion.ToLower() != ".xls" && fileExtenSion.ToLower() != ".xlsx")
+                    if (fileExtenSion.ToLower() != "xls" && fileExtenSion.ToLower() != "xlsx")
                     {
-                        return "上传的文件格式不正确";
+                        return "上传的文件格式不正确:" + fileExtenSion.ToLower();
                     }
 
                     return ToSQLServer(fileName, identity);

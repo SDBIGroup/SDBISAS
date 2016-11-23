@@ -14,21 +14,56 @@ namespace BLL
 {
     public class AddSQLStringToDAL
     {
+        /// <summary>
+        /// 查询一张表的所有数据
+        /// </summary>
+        /// <param name="Tname">查询的表名</param>
+        /// <returns></returns>
+        public static DataTable GetDTBySQL(string Tname)
+        {
+            string strSQL = SQLFactory.BuildSQLSelectString(Tname);
+            return ConnHelper.GetDataTable(strSQL);
+        }
+
+        /// <summary>
+        /// 查询指定表中的所有符合条件的数据
+        /// 接受一个约束条件
+        /// </summary>
+        /// <param name="Tname">查询的表名</param>
+        /// <param name="dl">条件名</param>
+        /// <param name="content">条件值</param>
+        /// <returns></returns>
         public static DataTable GetDTBySQL(string Tname, string dl, string content)
         {
             string strSQL = SQLFactory.BuildSQLSelectString(Tname, dl, content);
             return ConnHelper.GetDataTable(strSQL);
         }
 
+        /// <summary>
+        /// 查询指定表中的所有符合条件的数据
+        /// 接受两个约束参数
+        /// </summary>
+        /// <param name="Tname">表名</param>
+        /// <param name="dl">约束条件1</param>
+        /// <param name="d2">约束条件2</param>
+        /// <param name="content1">约束条件1的值</param>
+        /// <param name="content2">约束条件2的值</param>
+        /// <returns></returns>
         public static DataTable GetDTBySQL(string Tname, string dl, string d2, string content1, string content2)
         {
             string strSQL = SQLFactory.BuildSQLSelectString(Tname, dl, d2, content1, content2);
             return ConnHelper.GetDataTable(strSQL);
         }
 
-        public static DataTable GetDTBySQL(string colum, string Tname)
+        /// <summary>
+        /// 查询指定列的数据
+        /// </summary>
+        /// <param name="Tname">表名</param>
+        /// <param name="colum">列名</param>
+        /// <returns></returns>
+        public static DataTable GetDTBySQL(string Tname, string colum)
         {
-            string strSQL = SQLFactory.BuildSQLSelectString(colum, Tname);
+            string strSQL = SQLFactory.BuildSQLSelectString(Tname, colum);
             return ConnHelper.GetDataTable(strSQL);
         }
 
@@ -45,11 +80,43 @@ namespace BLL
             return ConnHelper.GetDistinceColoum(strSQL, name);
         }
 
-        public static DataTable GetDTBySQL4(string sql)
+        /// <summary>
+        /// ！猜测代码
+        /// 获取指定表中的指定字段中的所有数据
+        /// 查询的字段拥有一个约束条件【字段约束】
+        /// 返回一个list，包含每一行的数据
+        /// </summary>
+        /// <param name="strTable">表名</param>
+        /// <param name="name1">字段</param>
+        /// <param name="name2">约束字段名</param>
+        /// <param name="data">约束字段的值</param>
+        /// <returns></returns>
+        public static List<string> GetDistinctString(string strTable, string name1, string name2, string data)
         {
-            //DataSet ds = ConnHelper.GetDataSet(sql);
-            DataTable dt = ConnHelper.GetDataTable(sql);
-            return dt;
+            string strSQL = SQLFactory.BuildSQLSelectString(strTable, name1, name2, data);
+            return ConnHelper.GetDistinceColoum(strSQL, name1);
+        }
+
+        public static bool DeleteTabTeachers(string strTName)
+        {
+            //string strSQL = SQLFactory.BuildSQLSelectString(strTName);
+            //TODO
+            return true;
+        }
+
+        public static bool DeleteTab(string TName)
+        {
+            string strSQL = SQLFactory.BuildSQLDeleteString(TName);
+            return ConnHelper.ExecuteNoneQueryOperation(strSQL);
+        }
+
+        /// <summary>
+        /// 获取教师部分信息，用于初始化的显示
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetTeachersInfo()
+        {
+            return ConnHelper.GetDataTable("select Department,UserID,UserName,Role from TabTeachers");
         }
     }
 }

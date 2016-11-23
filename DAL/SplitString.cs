@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -213,6 +214,54 @@ namespace DAL
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// 处理教师信息表，把密码进行MD5加密而已
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static DataTable SplitTeacher4DT(DataTable dt)
+        {
+            string strSQL = "select * from TabTeachers where UserID='1'";
+            DataTable NewDT = ConnHelper.GetDataTable(strSQL);
+            DataRow dr = NewDT.NewRow();
+            //进行拆分处理
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int y = 0; y < 6; y++)
+                {
+                    if (y == 2)
+                    {
+                        dr[y] = md5(dt.Rows[i][y].ToString());
+                    }
+                    else
+                    {
+                        dr[y] = dt.Rows[i][y];
+                    }
+                }
+                NewDT.Rows.Add(dr);
+                dr = NewDT.NewRow();
+            }
+
+            return NewDT;
+        }
+
+        /// <summary>
+        /// MD5加密
+        /// </summary>
+        /// <param name="str">欲加密的字符串</param>
+        /// <returns>加密后的字符串</returns>
+        public static string md5(string input)
+        {
+            MD5CryptoServiceProvider md5Hasher = new MD5CryptoServiceProvider();
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
         }
     }
 }

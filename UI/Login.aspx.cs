@@ -18,31 +18,35 @@ public partial class Login : System.Web.UI.Page
     {
         if (value_1.Text.Length != 0 && value_2.Text.Length != 0)
         {
-            DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabTeachers", "User_ID", "User_PWD", value_1.Text, value_2.Text);
+            DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabTeachers", "User_ID", "User_PWD", value_1.Text, BLL.Tools.PWDProcess.Encrypt(value_2.Text));
             if (dt.Rows.Count == 1)
             {
-                string role = dt.Rows[0]["role"].ToString();
-                string username = dt.Rows[0]["username"].ToString();
+                string role = dt.Rows[0]["Role"].ToString();
+                Session["UserID"] = value_1.Text.Trim();
                 //保存用户数据
-                Session["UserID"] = value_1.Text.Trim();  //去一下空格
-                Session["Username"] = username;
-                Session["Role"] = role;
+                Session["username"] = dt.Rows[0]["UserName"].ToString(); //去一下空格
+                CurrentWeek();
+
                 switch (role)
                 {
                     case "1":
                         //页面跳转
+                        Session["role"] = "系统管理员";
                         Response.Redirect("./Admin/Default.aspx");
                         break;
                     case "2":
                         //页面跳转
+                        Session["role"] = "院系领导";
                         Response.Redirect("./Leader/Default.aspx");
                         break;
                     case "3":
                         //页面跳转
+                        Session["role"] = "辅导员";
                         Response.Redirect("./Secretary/Default.aspx");
                         break;
                     case "4":
                         //页面跳转
+                        Session["role"] = "教师";
                         Response.Redirect("./Teacher/Default.aspx");
                         break;
                     default:
@@ -59,6 +63,24 @@ public partial class Login : System.Web.UI.Page
         {
             Label1.Visible = true;
             Label1.Text = "请完整填写用户名或密码";
+        }
+    }
+
+    /// <summary>
+    /// 处理校历，确定处于第几周
+    /// </summary>
+    private void CurrentWeek()
+    {
+        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCalendar");
+        foreach (DataRow dr in dt.Rows)
+        {
+            if (Convert.ToDateTime(dr[1]) < DateTime.Now && Convert.ToDateTime(dr[2]) > DateTime.Now)
+            {
+                string strWeek = dr[0].ToString();
+                if (strWeek.Length == 1)
+                    strWeek = "0" + strWeek;
+                Session["week"] = strWeek;
+            }
         }
     }
 }

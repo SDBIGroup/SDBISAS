@@ -21,7 +21,7 @@ public partial class Admin_School_Teachers : System.Web.UI.Page
     private void q()
     {
         string sql = "select * from Test";
-        DataTable dt = BLL.AddSQLStringToDAL.GetDTBySQL4(sql);
+        DataTable dt = BLL.AddSQLStringToDAL.GetDTBySQL(sql);
         Label2.Text = dt.Columns.Count.ToString();
         GridView1.DataSource = dt;
         Response.Write(dt.Columns.Count + "");

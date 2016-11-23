@@ -21,6 +21,9 @@
     <asp:FileUpload ID="filecourse" runat="server" />
     <asp:Button ID="btnImportCourse" runat="server" Text="导入" OnClick="btnImportCourse_Click" />
     <br />
+    <asp:FileUpload ID="FileUpload2" runat="server" />
+    <asp:Button ID="BtnImportCalendar" runat="server" Text="导入" OnClick="BtnImportCalendar_Click" />
+    <br />
     <asp:Label ID="lbMessage1" runat="server" Text="Label"></asp:Label>
     <asp:Label ID="lbMessage2" runat="server" Text="Label"></asp:Label>
     <asp:Label ID="lbMessage3" runat="server" Text="Label"></asp:Label>

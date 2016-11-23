@@ -28,6 +28,7 @@
         Session["UserID"] = "";
         Session["Username"] = "";
         Session["Role"] = "";
+        Session["week"] = "0";
 
         Application.Lock();
         Application["Online"] = (int)Application["Online"] + 1;

@@ -52,12 +52,36 @@ namespace BLL.Tools
         /// <summary>
         /// 查询指定列的数据
         /// </summary>
-        /// <param name="column">列名</param>
         /// <param name="Tname">表名</param>
+        /// <param name="column">列名</param>
         /// <returns></returns>
-        public static string BuildSQLSelectString(string column, string Tname)
+        public static string BuildSQLSelectString(string Tname, string column)
         {
             return "select " + column + " from " + Tname;
+        }
+
+        /// <summary>
+        /// !猜测代码
+        /// 查询指定表的指定列，按照另一个约束
+        /// </summary>
+        /// <param name="strTable">表名</param>
+        /// <param name="name1">查询的列名</param>
+        /// <param name="name2">约束条件列</param>
+        /// <param name="data">约束条件值</param>
+        /// <returns></returns>
+        public static string BuildSQLSelectString(string strTable, string name1, string name2, string data)
+        {
+            return "select " + name1 + " from " + strTable + " where " + name2 + "='" + data + "';";
+        }
+
+        /// <summary>
+        /// 删除表中的所有数据
+        /// </summary>
+        /// <param name="TName">表名</param>
+        /// <returns></returns>
+        public static string BuildSQLDeleteString(string TName)
+        {
+            return "delete from " + TName;
         }
     }
 }
