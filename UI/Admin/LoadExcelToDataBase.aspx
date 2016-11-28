@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="LoadExcelToDataBase.aspx.cs" Inherits="Admin_LoadExcelToDataBase" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:RadioButton ID="rdoTeachers" runat="server" OnCheckedChanged="rdo_CheckedChanged" Text="本校教师" />
     <asp:RadioButton ID="rdoOthers" runat="server" Text="外聘教师" OnCheckedChanged="rdo_CheckedChanged" />
     <br />
     <asp:FileUpload ID="FileUpload1" runat="server" />
     <asp:Button ID="btnImportTeachers" runat="server" Text="导入" OnClick="btnImportTeachers_Click" />
     <br />
-    <asp:dropdownlist runat="server" ID="ddlDepartmentName" OnSelectedIndexChanged="ddlDepartmentName_SelectedIndexChanged">
+    <asp:DropDownList runat="server" ID="ddlDepartmentName" OnSelectedIndexChanged="ddlDepartmentName_SelectedIndexChanged">
         <asp:ListItem>教务处</asp:ListItem>
         <asp:ListItem>信息工程系</asp:ListItem>
         <asp:ListItem>会计系</asp:ListItem>
@@ -17,7 +17,7 @@
         <asp:ListItem>机械工程系</asp:ListItem>
         <asp:ListItem>基础教学部</asp:ListItem>
         <asp:ListItem>建筑工程系</asp:ListItem>
-    </asp:dropdownlist>
+    </asp:DropDownList>
     <asp:FileUpload ID="filecourse" runat="server" />
     <asp:Button ID="btnImportCourse" runat="server" Text="导入" OnClick="btnImportCourse_Click" />
     <br />

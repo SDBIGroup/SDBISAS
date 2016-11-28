@@ -159,5 +159,28 @@ namespace DAL
                 }
             }
         }
+
+        public static bool ExecSQL(string sql)
+        {
+            SqlConnection conn = getConn();
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
