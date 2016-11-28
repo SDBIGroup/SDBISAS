@@ -164,5 +164,47 @@ namespace BLL
         {
             return ConnHelper.GetDataTable("select department,user_id,username,role from TabTeachers");
         }
+
+        /// <summary>
+        /// 批量更新数据表
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="Tname"></param>
+        /// <returns></returns>
+        public static bool UpdateDT4Copy(DataTable dt, string Tname)
+        {
+            try
+            {
+                ConnHelper.SQLBulkCopy(dt, Tname);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// 查询指定表中的所有符合条件的数据
+        /// 接受五个约束参数
+        /// </summary>
+        /// <param name="Tname">表名</param>
+        /// <param name="v1">约束条件1</param>
+        /// <param name="v2">约束条件2</param>
+        /// <param name="v3">约束条件3</param>
+        /// <param name="v4">约束条件4</param>
+        /// <param name="v5">约束条件5</param>
+        /// <param name="con1">约束条件值1</param>
+        /// <param name="con2">约束条件值2</param>
+        /// <param name="con3">约束条件值3</param>
+        /// <param name="con4">约束条件值4</param>
+        /// <param name="con5">约束条件值5</param>
+        /// <returns></returns>
+        public static DataTable GetDTBySQL(string Tname, string v1, string v2, string v3, string v4, string v5, string con1, string con2, string con3, string con4, string con5)
+        {
+            string strSQL = "select * from " + Tname + " where " + v1 + "='" + con1 + "' and " + v2 + "='" + con2 + "' and " + v3 + "='" + con3 + "' and " + v4 + "='" + con4 + "' and " + v5 + "='" + con5 + "'";
+            return ConnHelper.GetDataTable(strSQL);
+        }
     }
 }
