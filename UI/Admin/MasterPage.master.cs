@@ -40,11 +40,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
             this.TreeView1.Nodes.Add(root);//将根节点添加到treeview中（就将根节点及子节点都装到了treeview中）
 
             //初始化基本信息的显示
-            lblName.Text = "欢迎您，" + Session["uid"].ToString();
-            lblRole.Text = "|用户角色：" + Session["su"].ToString();
+            lblName.Text = "欢迎您，" + Session["Username"].ToString();
+            lblRole.Text = "|用户角色：" + Session["Role"].ToString();
             lblWeek.Text = "|当前周次：" + Session["week"].ToString();
         }
-        Label1.Text = "当前在线人数：" + Application["online"].ToString() + "人";
+        Label1.Text = "当前在线人数：" + Application["Online"].ToString() + "人";
 
     }
 }

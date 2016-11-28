@@ -13,11 +13,12 @@ namespace DAL
     {
         /// <summary>
         /// 获取链接SQL Server数据库的打开链接
+        /// AttendanceSystemConnString
         /// </summary>
         /// <returns>SqlConnection对象</returns>
         private static SqlConnection getConn()
         {
-            string connString = ConfigurationManager.ConnectionStrings["AttendanceSystemConnString"].ConnectionString;
+            string connString = ConfigurationManager.ConnectionStrings["myConn"].ConnectionString;
             return new SqlConnection(connString);
         }
 

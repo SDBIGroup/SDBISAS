@@ -41,6 +41,36 @@ namespace BLL
 
         /// <summary>
         /// 查询指定表中的所有符合条件的数据
+        /// 接受三个约束参数
+        /// </summary>
+        /// <param name="Tname">表名</param>
+        /// <param name="dl">约束条件1</param>
+        /// <param name="d2">约束条件2</param>
+        /// <param name="d3">约束条件3</param>
+        /// <param name="content1">约束条件1的值</param>
+        /// <param name="content2">约束条件2的值</param>
+        /// <param name="content3">约束条件3的值</param>
+        /// <returns></returns>
+        public static DataTable GetDTBySQL(string Tname, string dl, string d2, string d3, string content1, string content2, string content3)
+        {
+            string strSQL = SQLFactory.BuildSQLSelectString(Tname, dl, d2, content1, content2);
+            return ConnHelper.GetDataTable(strSQL);
+        }
+
+        /// <summary>
+        /// 删除表内的数据，有一个约束条件
+        /// </summary>
+        /// <param name="v1">表名</param>
+        /// <param name="v2">约束字段</param>
+        /// <param name="v3">约束值</param>
+        public static bool DeleteRows(string v1, string v2, string v3)
+        {
+            string strSQL = SQLFactory.BuildSQLDeleteString(v1, v2, v3);
+            return ConnHelper.ExecuteNoneQueryOperation(strSQL);
+        }
+
+        /// <summary>
+        /// 查询指定表中的所有符合条件的数据
         /// 接受两个约束参数
         /// </summary>
         /// <param name="Tname">表名</param>
@@ -53,6 +83,22 @@ namespace BLL
         {
             string strSQL = SQLFactory.BuildSQLSelectString(Tname, dl, d2, content1, content2);
             return ConnHelper.GetDataTable(strSQL);
+        }
+
+        /// <summary>
+        /// 更新数据表
+        /// 更新一个字段，有一个条件
+        /// </summary>
+        /// <param name="v1">表名</param>
+        /// <param name="v2">更新的字段</param>
+        /// <param name="v3">更新后的值</param>
+        /// <param name="v4">约束名</param>
+        /// <param name="v5">约束值</param>
+        /// <returns></returns>
+        public static bool UpdateRows(string v1, string v2, string v3, string v4, string v5)
+        {
+            string strSQL = SQLFactory.BuildSQLUpdate(v1, v2, v3, v4, v5);
+            return ConnHelper.ExecuteNoneQueryOperation(strSQL);
         }
 
         /// <summary>
@@ -116,7 +162,7 @@ namespace BLL
         /// <returns></returns>
         public static DataTable GetTeachersInfo()
         {
-            return ConnHelper.GetDataTable("select Department,UserID,UserName,Role from TabTeachers");
+            return ConnHelper.GetDataTable("select department,user_id,username,role from TabTeachers");
         }
     }
 }

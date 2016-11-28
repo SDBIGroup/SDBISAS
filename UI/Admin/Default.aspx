@@ -3,26 +3,48 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      这是admin面板
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
-        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-        <Columns>
-            <asp:BoundField DataField="Department" HeaderText="所属部门" />
-            <asp:BoundField DataField="UserID" HeaderText="工号" />
-            <asp:BoundField DataField="UserName" HeaderText="姓名" />
-            <asp:BoundField DataField="Role" HeaderText="权限" />
-            <asp:CommandField HeaderText="编辑" ShowEditButton="True" />
-            <asp:CommandField HeaderText="删除" ShowDeleteButton="True" />
-        </Columns>
-        <EditRowStyle BackColor="#999999" />
-        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-        <SortedAscendingCellStyle BackColor="#E9E7E2" />
-        <SortedAscendingHeaderStyle BackColor="#506C8C" />
-        <SortedDescendingCellStyle BackColor="#FFFDF8" />
-        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-    </asp:GridView>
+     <asp:Label ID="lbTitile" runat="server" Text="Label"></asp:Label>
+    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+        <HeaderTemplate>
+            <!-- 显示头部 -->
+            <table class="movies">
+                <!-- table头部声明-->
+                <tr>
+                    <th>序号</th>
+                    <th>详细信息</th>
+                    <th>附加选项</th>
+                    <th>操作</th>
+                </tr>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <!-- 数据行 -->
+            <tr>
+                <td>
+                    <%--自动编号--%>
+                    <asp:Label ID="lbNo" runat="server" Text="<%#Container.ItemIndex+1 %>"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="lbContent" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>                          '
+                    <asp:Label ID="Label3" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>                         '
+                    <asp:Label ID="Label4" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:Label>
+                </td>
+                <td>
+                    <asp:CheckBox ID="CheckBox1" runat="server" />
+                </td>
+                <td>
+                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                </td>
+            </tr>
+        </ItemTemplate>
+        <FooterTemplate>
+            <!-- 脚注行 -->
+            </table>   
+            <!-- table尾 -->
+        </FooterTemplate>
+    </asp:Repeater>
+    <asp:Label ID="lbWork" runat="server" Text="Label"></asp:Label>
+    <br />
+    <asp:Repeater ID="Repeater2" runat="server"></asp:Repeater>
 </asp:Content>
 

@@ -223,7 +223,7 @@ namespace DAL
         /// <returns></returns>
         public static DataTable SplitTeacher4DT(DataTable dt)
         {
-            string strSQL = "select * from TabTeachers where UserID='1'";
+            string strSQL = "select * from TabTeachers where user_id='1'";
             DataTable NewDT = ConnHelper.GetDataTable(strSQL);
             DataRow dr = NewDT.NewRow();
             //进行拆分处理
