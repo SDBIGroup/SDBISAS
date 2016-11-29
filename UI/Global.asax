@@ -25,10 +25,17 @@
     void Session_Start(object sender, EventArgs e)
     {
         // 在新会话启动时运行的代码
-        Session["UserID"] = "";
+        //测试代码TODO
+        Session["UserID"] = "2012015001";
         Session["Username"] = "";
-        Session["Role"] = "";
-        Session["week"] = "0";
+        Session["Role"] = "1";
+        Session["week"] = "14";
+        Session["code"] = "";
+        Session["course"] = "[370411]建筑基础(9)";
+        Session["gWeek"] = "星期一";
+        Session["time"] = "3-4节";
+        Session["CurrentCourse"] = "";
+        Session["Homework"] = "";
 
         Application.Lock();
         Application["Online"] = (int)Application["Online"] + 1;
