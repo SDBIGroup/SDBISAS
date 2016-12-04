@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Admin_Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     这是admin面板
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    这是admin面板
     <br />
-     <asp:Label ID="lbTitile" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="lbTitile" runat="server" Text="Label"></asp:Label>
     <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
         <HeaderTemplate>
             <!-- 显示头部 -->
@@ -25,8 +25,10 @@
                 </td>
                 <td>
                     <asp:Label ID="lbContent" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:Label>
-                    <asp:Label ID="Label2" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>                          '
-                    <asp:Label ID="Label3" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>                         '
+                    <asp:Label ID="Label2" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>
+                    '
+                    <asp:Label ID="Label3" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>
+                    '
                     <asp:Label ID="Label4" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:Label>
                 </td>
                 <td>

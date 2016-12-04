@@ -162,7 +162,30 @@ namespace BLL
         /// <returns></returns>
         public static DataTable GetTeachersInfo()
         {
-            return ConnHelper.GetDataTable("select department,user_id,username,role from TabTeachers");
+            return ConnHelper.GetDataTable("select department,user_id,user_name,role from TabTeachers");
+        }
+
+        public static bool AddNewUser(string userID, string sql)
+        {
+            string queryUserSQL = "SELECT * FROM TabTeachers WHERE User_ID = '" + userID + "'";
+            DataSet ds = ConnHelper.GetDataSet(queryUserSQL);
+            DataTable dt = ds.Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                return false;
+            }
+            else if (dt.Rows.Count == 0)
+            {
+                if (ConnHelper.ExecSQL(sql))
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

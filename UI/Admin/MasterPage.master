@@ -63,7 +63,6 @@
             margin-top: 60px;
             margin-right: 20px;
         }
-
     </style>
 
     <%--<asp:ContentPlaceHolder id="head" runat="server">
@@ -82,7 +81,7 @@
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT * FROM [su_Admin]"></asp:SqlDataSource>
                 </div>
                 <div id="right">
-                     <asp:Label ID="lblName" runat="server" Text="null"></asp:Label>
+                    <asp:Label ID="lblName" runat="server" Text="null"></asp:Label>
                     <asp:Label ID="lblRole" runat="server" Text="null"></asp:Label>
                     <asp:Label ID="lblWeek" runat="server" Text="null"></asp:Label>
                     <br />

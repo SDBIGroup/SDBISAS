@@ -24,7 +24,7 @@ public partial class Login : System.Web.UI.Page
                 string role = dt.Rows[0]["Role"].ToString();
                 Session["UserID"] = value_1.Text.Trim();
                 //保存用户数据
-                Session["username"] = dt.Rows[0]["UserName"].ToString(); //去一下空格
+                Session["username"] = dt.Rows[0]["User_Name"].ToString(); //去一下空格
                 CurrentWeek();
 
                 switch (role)
