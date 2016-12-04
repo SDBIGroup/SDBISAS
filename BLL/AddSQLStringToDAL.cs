@@ -53,7 +53,7 @@ namespace BLL
         /// <returns></returns>
         public static DataTable GetDTBySQL(string Tname, string dl, string d2, string d3, string content1, string content2, string content3)
         {
-            string strSQL = SQLFactory.BuildSQLSelectString(Tname, dl, d2, content1, content2);
+            string strSQL = SQLFactory.BuildSQLSelectString(Tname, dl, d2, d3, content1, content2, content3);
             return ConnHelper.GetDataTable(strSQL);
         }
 

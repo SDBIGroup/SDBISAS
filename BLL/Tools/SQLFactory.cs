@@ -47,7 +47,7 @@ namespace BLL.Tools
         /// <returns></returns>
         public static string BuildSQLSelectString(string Tname, string dl, string d2, string d3, string text1, string text2, string text3)
         {
-            return "select * from " + Tname + " where " + dl + "='" + text1 + "' and " + d2 + "='" + text2 + "'" + "' and " + d3 + "='" + text3 + "'";
+            return "select * from " + Tname + " where " + dl + "='" + text1 + "' and " + d2 + "='" + text2 + "'" + " and " + d3 + "='" + text3 + "'";
         }
 
         /// <summary>
