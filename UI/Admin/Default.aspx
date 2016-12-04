@@ -24,18 +24,16 @@
                     <asp:Label ID="lbNo" runat="server" Text="<%#Container.ItemIndex+1 %>"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="lbContent" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:Label>
-                    <asp:Label ID="Label2" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>
-                    '
-                    <asp:Label ID="Label3" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>
-                    '
-                    <asp:Label ID="Label4" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:Label>
+                   <asp:TextBox ID="TBweek" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:TextBox>
+                    <asp:TextBox ID="TBtime" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:TextBox>                          '
+                    <asp:TextBox ID="TBcour" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:TextBox>                         '
+                    <asp:TextBox ID="TBarea" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:TextBox>
                 </td>
                 <td>
-                    <asp:CheckBox ID="CheckBox1" runat="server" />
+                    <asp:CheckBox ID="CheckBox1" Text="布置作业" runat="server" />
                 </td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                    <asp:Button ID="Button1" runat="server" Text="考勤" />
                 </td>
             </tr>
         </ItemTemplate>

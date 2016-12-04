@@ -262,10 +262,10 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
         StringBuilder strLeave = new StringBuilder("请假名单：");
         //获取表结构
         DataTable attendanceList = AddSQLStringToDAL.GetDTBySQL("TabStudentAttendance", "0", "1");
-        attendanceList.Clear();
         //创建符合表结构的一行
         DataRow attendanceRow = attendanceList.NewRow();
         int sum = 0; //总人数
+
         foreach (GridViewRow row in this.GridView1.Rows)
         {
             //单选框属性对象
@@ -291,7 +291,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 attendanceList.Rows.Add(attendanceRow);
                 sum++;
                 strLate.Append(cell[3].Text.ToString() + ";");
-
+                attendanceRow = attendanceList.NewRow();
             }
             else
             if ((ctl3 as RadioButton).Checked)
@@ -312,7 +312,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 sum++;
 
                 strAbsence.Append(cell[3].Text.ToString() + ";");
-
+                attendanceRow = attendanceList.NewRow();
             }
             else
             if ((ctl4 as RadioButton).Checked)
@@ -333,7 +333,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 sum++;
 
                 strEarly.Append(cell[3].Text.ToString() + ";");
-
+                attendanceRow = attendanceList.NewRow();
             }
             else
             if ((ctl5 as RadioButton).Checked)
@@ -354,7 +354,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 sum++;
 
                 strLeave.Append(cell[3].Text.ToString() + ";");
-
+                attendanceRow = attendanceList.NewRow();
             }
         }
         if (!AddSQLStringToDAL.UpdateDT4Copy(attendanceList, "TabStudentAttendance"))
@@ -380,14 +380,20 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
             Label4.Text = strEarly.ToString();
             Label5.Text = strLeave.ToString();
             //清空数据
-            strLate.Remove(0, strLate.Length);
-            strAbsence.Remove(0, strAbsence.Length);
-            strEarly.Remove(0, strEarly.Length);
-            strLeave.Remove(0, strLeave.Length);
-            SetControlsVisibleFalse();
+            strLate.Clear();
+            strAbsence.Clear();
+            strEarly.Clear();
+            strLeave.Clear();
+            GridView1.Visible = false;
+            btnAtten.Visible = false;
             Label6.Text = "本次考勤记录已经上报成功！本次课您" + Session["Homework"].ToString() + ",请返回主界面！";
             btnClose.Visible = true;
 
         }
+    }
+
+    protected void btnClose_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default");
     }
 }

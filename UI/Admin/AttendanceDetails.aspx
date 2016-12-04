@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-    <asp:Button ID="btnClose" runat="server" Text="Close" />
+    <asp:Button ID="btnClose" runat="server" Text="Close" OnClick="btnClose_Click" />
     <asp:Button ID="btnAtten" runat="server" Text="提交" OnClick="btnAtten_Click" />
     <br />
     <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>

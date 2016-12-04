@@ -55,6 +55,22 @@ public partial class Admin_Default : System.Web.UI.Page
     //用来响应Item模板中的控件的事件
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
+        CheckBox chk = e.Item.FindControl("CheckBox1") as CheckBox;
+        Session["homeWork"] = chk.Checked ? "已布置作业" : "未布置作业";
 
+        TextBox tb1 = e.Item.FindControl("TBcour") as TextBox;
+        Session["currentCourse"] = tb1.Text.Trim();
+
+        TextBox tb2 = e.Item.FindControl("TBweek") as TextBox;
+        Session["gWeek"] = tb1.Text.Trim();
+
+        TextBox tb3 = e.Item.FindControl("TBtime") as TextBox;
+        Session["time"] = tb1.Text.Trim();
+
+        TextBox tb4 = e.Item.FindControl("TBarea") as TextBox;
+        Session["weekRange"] = tb1.Text.Trim();
+
+        //页面跳转
+        Response.Redirect("AttendanceDetails");
     }
 }

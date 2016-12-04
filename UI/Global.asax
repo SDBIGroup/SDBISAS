@@ -34,8 +34,9 @@
         Session["course"] = "[370411]建筑基础(9)";
         Session["gWeek"] = "星期一";
         Session["time"] = "3-4节";
-        Session["CurrentCourse"] = "";
-        Session["Homework"] = "";
+        Session["currentCourse"] = "[370411]建筑基础(9)";
+        Session["homeWork"] = "";
+        Session["weekRange"] = "";
 
         Application.Lock();
         Application["Online"] = (int)Application["Online"] + 1;
