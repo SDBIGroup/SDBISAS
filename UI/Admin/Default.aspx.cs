@@ -19,7 +19,7 @@ public partial class Admin_Default : System.Web.UI.Page
 
     private void bindData()
     {
-        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabAllCourses", "TeacherID", "CurrentWeek", "2012015001", "1");
+        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_id", "Current_Week", "2012015001", "1");
         if (dt.Rows.Count == 0)
         {
             lbTitile.Text = "您本周无授课安排";
@@ -31,7 +31,7 @@ public partial class Admin_Default : System.Web.UI.Page
         }
 
         //作业处理
-        int weekNum = Convert.ToInt32(Session["week"].ToString()), lastWeek = 0;
+        int weekNum = Convert.ToInt32(Session["currentWeek"].ToString()), lastWeek = 0;
         if (weekNum > 1)
         {
             lastWeek = weekNum - 1;
@@ -39,7 +39,7 @@ public partial class Admin_Default : System.Web.UI.Page
         if (lastWeek != 0)
         {
             //TODO
-            DataTable dtHome = AddSQLStringToDAL.GetDTBySQL("TabAllCourses", "TeacherID", "CurrentWeek", "Count", "2012015001", lastWeek.ToString(), "已布置作业");
+            DataTable dtHome = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_ID", "Current_Week", "Count", "2012015001", lastWeek.ToString(), "已布置作业");
             if (dtHome.Rows.Count == 0)
             {
                 lbWork.Text = "上周作业没有未批改情况！";
@@ -62,7 +62,7 @@ public partial class Admin_Default : System.Web.UI.Page
         Session["currentCourse"] = tb1.Text.Trim();
 
         TextBox tb2 = e.Item.FindControl("TBweek") as TextBox;
-        Session["gWeek"] = tb1.Text.Trim();
+        Session["week"] = tb1.Text.Trim();
 
         TextBox tb3 = e.Item.FindControl("TBtime") as TextBox;
         Session["time"] = tb1.Text.Trim();
