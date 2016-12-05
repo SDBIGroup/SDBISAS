@@ -33,7 +33,7 @@
         </Columns>
     </asp:GridView>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConnTest %>" SelectCommand="SELECT [ClassDepartment], [StuID], [StuName], [ClassName] FROM [TabAllCourses] WHERE (([TeacherID] = @TeacherID) AND ([Course] = @Course) AND ([CurrentWeek] = @CurrentWeek) AND ([Time] = @Time) AND ([Week] = @Week))">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT [ClassDepartment], [StuID], [StuName], [ClassName] FROM [TabAllCourses] WHERE (([TeacherID] = @TeacherID) AND ([Course] = @Course) AND ([CurrentWeek] = @CurrentWeek) AND ([Time] = @Time) AND ([Week] = @Week))">
         <SelectParameters>
             <asp:SessionParameter Name="TeacherID" SessionField="UserID" Type="String" />
             <asp:SessionParameter Name="Course" SessionField="course" Type="String" />

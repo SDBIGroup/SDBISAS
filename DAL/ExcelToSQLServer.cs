@@ -217,7 +217,7 @@ namespace DAL
             if (CheckExcelTableCourses())
             {
                 DataTable dt = SplitString.SplitDT(ds.Tables["ExcelInfo"]);
-                CoursesTOSQLServer(dt, "AllCourse");
+                CoursesTOSQLServer(dt, "TabCourses");
                 return "文件导入成功";
             }
             else

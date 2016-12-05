@@ -14,7 +14,7 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         if (!IsPostBack)
         {
             //strTest.Length == 0 这种方式的执行效率最高
-            if (Session["UserID"].ToString().Length == 0 )
+            if (Session["userID"].ToString().Length == 0 )
             {
                 //如果没有登陆，重定向到登陆页面
                 //Response.Redirect("~//Login.aspx");
@@ -133,7 +133,7 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         Clear();
         List<string> strList = new List<string>();
         //查询课程信息
-        strList = AddSQLStringToDAL.GetDistinctString("TabAllCourses", "TeacherID");
+        strList = AddSQLStringToDAL.GetDistinctString("TabCourses", "TeacherID");
         for (int i = 0; i < strList.Count; i++)
         {
             //TODO
@@ -154,7 +154,7 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
         {
             List<string> strDD = new List<string>();
             //根据教师的ID查询出授课时间表，装到一个list中
-            strDD = AddSQLStringToDAL.GetDistinctString("TabAllCourses", "TimeAndArea", "TeacherID", strList[i].ToString());
+            strDD = AddSQLStringToDAL.GetDistinctString("TabCourses", "TimeAndArea", "TeacherID", strList[i].ToString());
             for (int k = 0; k < strDD.Count; k++)
             {
                 List<string> strResult = new List<string>();

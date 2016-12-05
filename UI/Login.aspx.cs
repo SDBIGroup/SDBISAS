@@ -21,10 +21,10 @@ public partial class Login : System.Web.UI.Page
             DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabTeachers", "User_ID", "User_PWD", value_1.Text, BLL.Tools.PWDProcess.Encrypt(value_2.Text));
             if (dt.Rows.Count == 1)
             {
-                string role = dt.Rows[0]["Role"].ToString();
-                Session["UserID"] = value_1.Text.Trim();
+                string role = dt.Rows[0]["role"].ToString();
+                Session["userID"] = value_1.Text.Trim();
                 //保存用户数据
-                Session["username"] = dt.Rows[0]["User_Name"].ToString(); //去一下空格
+                Session["userName"] = dt.Rows[0]["User_Name"].ToString(); //去一下空格
                 CurrentWeek();
 
                 switch (role)
@@ -79,7 +79,7 @@ public partial class Login : System.Web.UI.Page
                 string strWeek = dr[0].ToString();
                 if (strWeek.Length == 1)
                     strWeek = "0" + strWeek;
-                Session["week"] = strWeek;
+                Session["currentWeek"] = strWeek;
             }
         }
     }

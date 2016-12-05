@@ -17,7 +17,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Session["CurrentCourse"].ToString() != "")
+            if (Session["currentCourse"].ToString() != "")
             {
                 //InitialOperation();
                 btnClose.Visible = true;
@@ -40,8 +40,8 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 }
                 else
                 {
-                    string strCourse = Session["Course"].ToString();
-                    Label2.Text = Session["gweek"].ToString() + Session["time"].ToString()
+                    string strCourse = Session["course"].ToString();
+                    Label2.Text = Session["week"].ToString() + Session["time"].ToString()
                         + "|" + strCourse.Substring(8) + "|" + this.GridView1.Rows.Count.ToString() + "人";
                     c = this.GridView1.BackColor;
                 }
@@ -71,9 +71,9 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
     /// <returns></returns>
     private bool CheckIsRecords()
     {
-        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabAllCourses", "TeacherID", "CurrentWeek", "Course",
-            "Week", "Time", Session["UserID"].ToString(), Session["week"].ToString(), Session["course"].ToString(),
-            Session["gweek"].ToString(), Session["time"].ToString());
+        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_id", "Current_Week", "Course",
+            "Week", "Time", Session["userID"].ToString(), Session["currentWeek"].ToString(), Session["course"].ToString(),
+            Session["week"].ToString(), Session["time"].ToString());
 
         if (dt.Rows[0]["IsAttendance"].ToString().Trim() == "未考勤")
         {
@@ -121,7 +121,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 break;
 
         }
-        switch (Session["gweek"].ToString())
+        switch (Session["week"].ToString())
         {
             case "星期一":
                 Week = 1;
@@ -276,11 +276,11 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
             TableCellCollection cell = row.Cells;//获取GridView本行中的值的集合
             if ((ctl2 as RadioButton).Checked)
             {
-                attendanceRow[0] = Session["UserID"];
-                attendanceRow[1] = Session["Username"];
+                attendanceRow[0] = Session["userID"];
+                attendanceRow[1] = Session["userName"];
                 attendanceRow[2] = Session["course"];  //课程名
-                attendanceRow[3] = Session["week"];  // 周 数字
-                attendanceRow[4] = Session["gweek"];  // 周，格式化显示
+                attendanceRow[3] = Session["currentWeek"];  // 周 数字
+                attendanceRow[4] = Session["week"];  // 周，格式化显示
                 attendanceRow[5] = Session["time"];  // 第几节
                 attendanceRow[6] = cell[0].Text.ToString(); //系部
                 attendanceRow[7] = cell[1].Text.ToString(); //t4 班级名称
@@ -296,11 +296,11 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
             else
             if ((ctl3 as RadioButton).Checked)
             {
-                attendanceRow[0] = Session["UserID"];
-                attendanceRow[1] = Session["Username"];
+                attendanceRow[0] = Session["userID"];
+                attendanceRow[1] = Session["userName"];
                 attendanceRow[2] = Session["course"];  //课程名
-                attendanceRow[3] = Session["week"];  // 周 数字
-                attendanceRow[4] = Session["gweek"];  // 周，格式化显示
+                attendanceRow[3] = Session["currentWeek"];  // 周 数字
+                attendanceRow[4] = Session["week"];  // 周，格式化显示
                 attendanceRow[5] = Session["time"];  // 第几节
                 attendanceRow[6] = cell[0].Text.ToString(); //系部
                 attendanceRow[7] = cell[1].Text.ToString(); //t4 班级名称
@@ -317,11 +317,11 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
             else
             if ((ctl4 as RadioButton).Checked)
             {
-                attendanceRow[0] = Session["UserID"];
-                attendanceRow[1] = Session["Username"];
+                attendanceRow[0] = Session["userID"];
+                attendanceRow[1] = Session["userName"];
                 attendanceRow[2] = Session["course"];  //课程名
-                attendanceRow[3] = Session["week"];  // 周 数字
-                attendanceRow[4] = Session["gweek"];  // 周，格式化显示
+                attendanceRow[3] = Session["currentWeek"];  // 周 数字
+                attendanceRow[4] = Session["week"];  // 周，格式化显示
                 attendanceRow[5] = Session["time"];  // 第几节
                 attendanceRow[6] = cell[0].Text.ToString(); //系部
                 attendanceRow[7] = cell[1].Text.ToString(); //t4 班级名称
@@ -338,11 +338,11 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
             else
             if ((ctl5 as RadioButton).Checked)
             {
-                attendanceRow[0] = Session["UserID"];
-                attendanceRow[1] = Session["Username"];
+                attendanceRow[0] = Session["userID"];
+                attendanceRow[1] = Session["userName"];
                 attendanceRow[2] = Session["course"];  //课程名
-                attendanceRow[3] = Session["week"];  // 周 数字
-                attendanceRow[4] = Session["gweek"];  // 周，格式化显示
+                attendanceRow[3] = Session["currentWeek"];  // 周 数字
+                attendanceRow[4] = Session["week"];  // 周，格式化显示
                 attendanceRow[5] = Session["time"];  // 第几节
                 attendanceRow[6] = cell[0].Text.ToString(); //系部
                 attendanceRow[7] = cell[1].Text.ToString(); //t4 班级名称
@@ -386,7 +386,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
             strLeave.Clear();
             GridView1.Visible = false;
             btnAtten.Visible = false;
-            Label6.Text = "本次考勤记录已经上报成功！本次课您" + Session["Homework"].ToString() + ",请返回主界面！";
+            Label6.Text = "本次考勤记录已经上报成功！本次课您" + Session["homeWork"].ToString() + ",请返回主界面！";
             btnClose.Visible = true;
 
         }
