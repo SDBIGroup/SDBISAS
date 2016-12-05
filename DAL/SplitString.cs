@@ -14,28 +14,71 @@ namespace DAL
         {
             DataTable newDt = new DataTable();
 
-            DataColumn tea_id = new DataColumn("tea_id");
-            DataColumn course = new DataColumn("course");
-            DataColumn week_range = new DataColumn("week_range");
-            DataColumn time = new DataColumn("time");
-            DataColumn stu_name = new DataColumn("stu_id");
+            DataColumn teacher_department = new DataColumn("teacher_department");
+            DataColumn teacher_id = new DataColumn("teacher_id");
+            DataColumn teacher_name = new DataColumn("teacher_name");
+            DataColumn current_week = new DataColumn("current_week");
             DataColumn week = new DataColumn("week");
-            newDt.Columns.Add(tea_id);
-            newDt.Columns.Add(course);
-            newDt.Columns.Add(week_range);
-            newDt.Columns.Add(time);
-            newDt.Columns.Add(stu_name);
+            DataColumn time = new DataColumn("time");
+            DataColumn course = new DataColumn("course");
+            DataColumn is_attendance = new DataColumn("is_attendance");
+            DataColumn area = new DataColumn("area");
+            DataColumn class_name = new DataColumn("class_name");
+            DataColumn class_department = new DataColumn("class_department");
+            DataColumn stu_id = new DataColumn("stu_id");
+            DataColumn stu_name = new DataColumn("stu_name");
+            DataColumn stu_sex = new DataColumn("stu_sex");
+            DataColumn admin_class = new DataColumn("admin_class");
+            DataColumn count = new DataColumn("count");
+
+            //DataColumn course = new DataColumn("course");
+            //DataColumn week_range = new DataColumn("week_range");
+            //DataColumn time = new DataColumn("time");
+            //DataColumn stu_name = new DataColumn("stu_id");
+            //DataColumn week = new DataColumn("week");
+
+
+            newDt.Columns.Add(teacher_department);
+            newDt.Columns.Add(teacher_id);
+            newDt.Columns.Add(teacher_name);
+            newDt.Columns.Add(current_week);
             newDt.Columns.Add(week);
+            newDt.Columns.Add(time);
+            newDt.Columns.Add(course);
+            newDt.Columns.Add(is_attendance);
+            newDt.Columns.Add(area);
+            newDt.Columns.Add(class_name);
+            newDt.Columns.Add(class_department);
+            newDt.Columns.Add(stu_id);
+            newDt.Columns.Add(stu_name);
+            newDt.Columns.Add(stu_sex);
+            newDt.Columns.Add(admin_class);
+            newDt.Columns.Add(count);
+
 
             for (int i = 0; i < oldDt.Rows.Count; i++)
             {
                 DataRow dr = newDt.NewRow();
-                dr["tea_id"] = getID(oldDt.Rows[i][1].ToString());
-                dr["course"] = getCourses(oldDt.Rows[i][3].ToString());
-                dr["week_range"] = getWeekRange(oldDt.Rows[i][2].ToString());
+                dr["teacher_id"] = getID(oldDt.Rows[i][1].ToString());
+                dr["teacher_name"] = getID(oldDt.Rows[i][1].ToString());
+
+                dr["current_week"] = getWeekRange(oldDt.Rows[i][2].ToString());
                 dr["week"] = getWeek(oldDt.Rows[i][2].ToString());
                 dr["time"] = getTime(oldDt.Rows[i][2].ToString());
-                dr["stu_id"] = oldDt.Rows[i][9].ToString();
+
+                dr["course"] = getCourses(oldDt.Rows[i][3].ToString());
+                dr["area"] = getCourses(oldDt.Rows[i][3].ToString());
+
+                dr[0] = oldDt.Rows[i][0].ToString(); //承担单位
+                dr[6] = oldDt.Rows[i][3];
+                dr[7] = "未考勤"; //初始化
+                dr[9] = oldDt.Rows[i][7]; //上课班级
+                dr[10] = oldDt.Rows[i][8]; //上课班级所属系部
+                dr[11] = oldDt.Rows[i][9]; //学号
+                dr[12] = oldDt.Rows[i][10]; //学生姓名
+                dr[13] = oldDt.Rows[i][12]; //性别
+                dr[14] = oldDt.Rows[i][11]; //行政班级
+                dr[15] = "未布置作业";
                 newDt.Rows.Add(dr);
             }
 
