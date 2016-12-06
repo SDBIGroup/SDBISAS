@@ -24,10 +24,10 @@
                     <asp:Label ID="lbNo" runat="server" Text="<%#Container.ItemIndex+1 %>"></asp:Label>
                 </td>
                 <td>
-                   <asp:TextBox ID="TBweek" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:TextBox>
-                    <asp:TextBox ID="TBtime" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:TextBox>                          '
-                    <asp:TextBox ID="TBcour" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:TextBox>                         '
-                    <asp:TextBox ID="TBarea" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:TextBox>
+                   <asp:Label ID="TBweek" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:Label>
+                    <asp:Label ID="TBtime" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>
+                    <asp:Label ID="TBcour" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>
+                    <asp:Label ID="TBarea" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:Label>
                 </td>
                 <td>
                     <asp:CheckBox ID="CheckBox1" Text="布置作业" runat="server" />

@@ -26,15 +26,15 @@
     {
         // 在新会话启动时运行的代码
         //测试代码TODO
-        Session["userID"] = "2007013623";
+        Session["userID"] = "2007023604";
         Session["userName"] = "";
         Session["role"] = "1";
-        Session["currentWeek"] = "16";
+        Session["currentWeek"] = "1";
         Session["code"] = "";
-        Session["course"] = "[360240]包装设计(4)";
+        Session["course"] = "[360100]IT职业素养(2)";
         Session["week"] = "星期三";
         Session["time"] = "5-6节";
-        Session["currentCourse"] = "[360240]包装设计(4)";
+        Session["currentCourse"] = "[360100]IT职业素养(2)";
         Session["homeWork"] = "";
         Session["weekRange"] = "";
 

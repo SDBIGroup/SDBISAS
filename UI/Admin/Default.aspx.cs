@@ -19,7 +19,7 @@ public partial class Admin_Default : System.Web.UI.Page
 
     private void bindData()
     {
-        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_id", "Current_Week", "2012015001", "1");
+        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_id", "Current_Week", Session["userID"].ToString(), Session["currentWeek"].ToString());
         if (dt.Rows.Count == 0)
         {
             lbTitile.Text = "您本周无授课安排";
@@ -39,7 +39,7 @@ public partial class Admin_Default : System.Web.UI.Page
         if (lastWeek != 0)
         {
             //TODO
-            DataTable dtHome = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_ID", "Current_Week", "Count", "2012015001", lastWeek.ToString(), "已布置作业");
+            DataTable dtHome = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_ID", "Current_Week", "Count", Session["userID"].ToString(), lastWeek.ToString(), "已布置作业");
             if (dtHome.Rows.Count == 0)
             {
                 lbWork.Text = "上周作业没有未批改情况！";
@@ -58,19 +58,19 @@ public partial class Admin_Default : System.Web.UI.Page
         CheckBox chk = e.Item.FindControl("CheckBox1") as CheckBox;
         Session["homeWork"] = chk.Checked ? "已布置作业" : "未布置作业";
 
-        TextBox tb1 = e.Item.FindControl("TBcour") as TextBox;
+        Label tb1 = e.Item.FindControl("TBcour") as Label;
         Session["currentCourse"] = tb1.Text.Trim();
 
-        TextBox tb2 = e.Item.FindControl("TBweek") as TextBox;
+        Label tb2 = e.Item.FindControl("TBweek") as Label;
         Session["week"] = tb1.Text.Trim();
 
-        TextBox tb3 = e.Item.FindControl("TBtime") as TextBox;
+        Label tb3 = e.Item.FindControl("TBtime") as Label;
         Session["time"] = tb1.Text.Trim();
 
-        TextBox tb4 = e.Item.FindControl("TBarea") as TextBox;
+        Label tb4 = e.Item.FindControl("TBarea") as Label;
         Session["weekRange"] = tb1.Text.Trim();
 
         //页面跳转
-        Response.Redirect("AttendanceDetails");
+        Response.Redirect("AttendanceDetails.aspx");
     }
 }
