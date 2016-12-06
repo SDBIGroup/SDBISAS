@@ -82,8 +82,44 @@ namespace DAL
                 newDt.Rows.Add(dr);
             }
 
-            return newDt;
+            return SplitNewDt2(newDt);
         }
+
+        public static DataTable SplitNewDt2(DataTable dt11)
+        {
+            DataTable ddtt = dt11;
+            DataRow dr = ddtt.NewRow();
+            for (int i = 0; i < dt11.Rows.Count; i++)
+            {
+                string[] current_week = dt11.Rows[i]["current_week"].ToString().Split(' ');
+                string[] week = dt11.Rows[i]["week"].ToString().Split(' ');
+                string[] time = dt11.Rows[i]["time"].ToString().Split(' ');
+                //  MessageBox.Show(dt11.Rows[i]["current_week"] + "\n" + dt11.Rows[i]["week"]);
+                //MessageBox.Show(ddtt.Rows[i]["current_week"].ToString() + ddtt.Rows[i]["week"].ToString());
+                int all = current_week.Length + week.Length;
+                for (int j = 0; j < week.Length; j++)
+                {
+                    for (int k = 0; k < current_week.Length; k++)
+                    {
+                        if (j != 0 && k != 0)
+                        {
+                            for (int m = 0; m < 15; m++)
+                            {
+                                dr[m] = dt11.Rows[i][m];
+                            }
+                            dr["current_week"] = current_week[k];
+                            dr["week"] = week[j];
+                            dr["time"] = time[j];
+                            ddtt.Rows.Add(dr);
+                            dr = ddtt.NewRow();
+                        }
+                    }
+                }
+            }
+
+            return ddtt;
+        }
+
 
         private static object getTime(string v)
         {
