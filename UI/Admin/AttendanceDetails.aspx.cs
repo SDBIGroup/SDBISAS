@@ -40,7 +40,7 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
                 }
                 else
                 {
-                    string strCourse = Session["course"].ToString();
+                    string strCourse = Session["currentCourse"].ToString();
                     Label2.Text = Session["week"].ToString() + Session["time"].ToString()
                         + "|" + strCourse.Substring(8) + "|" + this.GridView1.Rows.Count.ToString() + "人";
                     c = this.GridView1.BackColor;
@@ -72,10 +72,10 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
     private bool CheckIsRecords()
     {
         DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_id", "Current_Week", "Course",
-            "Week", "Time", Session["userID"].ToString(), Session["currentWeek"].ToString(), Session["course"].ToString(),
+            "Week", "Time", Session["userID"].ToString(), Session["currentWeek"].ToString(), Session["currentCourse"].ToString(),
             Session["week"].ToString(), Session["time"].ToString());
 
-        if (dt.Rows[0]["IsAttendance"].ToString().Trim() == "未考勤")
+        if (dt.Rows[0]["is_attendance"].ToString().Trim() == "未考勤")
         {
             return false;
         }
@@ -394,6 +394,6 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
 
     protected void btnClose_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Default");
+        Response.Redirect("Default.aspx");
     }
 }

@@ -62,14 +62,16 @@ public partial class Admin_Default : System.Web.UI.Page
         Session["currentCourse"] = tb1.Text.Trim();
 
         Label tb2 = e.Item.FindControl("TBweek") as Label;
-        Session["week"] = tb1.Text.Trim();
+        Session["week"] = tb2.Text.Trim();
 
         Label tb3 = e.Item.FindControl("TBtime") as Label;
-        Session["time"] = tb1.Text.Trim();
+        Session["time"] = tb3.Text.Trim();
 
         Label tb4 = e.Item.FindControl("TBarea") as Label;
-        Session["weekRange"] = tb1.Text.Trim();
+        Session["weekRange"] = tb4.Text.Trim();
 
+        //lbTitile.Text = "" + Session["userID"].ToString() + Session["currentWeek"].ToString() + Session["currentCourse"].ToString() +
+        //    Session["week"].ToString() + Session["time"].ToString();
         //页面跳转
         Response.Redirect("AttendanceDetails.aspx");
     }
