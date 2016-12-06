@@ -15,12 +15,16 @@
     <br />
     <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
     <br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowSorting="True" OnRowDataBound="GridView1_RowDataBound">
+    <asp:scriptmanager id="ScriptManager1" runat="server">
+  </asp:scriptmanager>
+    <asp:updatepanel runat="server" id="UpdatePanel1">
+        <ContentTemplate>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowSorting="True" OnRowDataBound="GridView1_RowDataBound" DataSourceID="SqlDataSource1">
         <Columns>
-            <asp:BoundField DataField="Class_Department" HeaderText="所属系部" />
-            <asp:BoundField DataField="Class_Name" HeaderText="班级" />
-            <asp:BoundField DataField="Stu_ID" HeaderText="学号" />
-            <asp:BoundField DataField="Stu_Name" HeaderText="姓名" />
+            <asp:BoundField DataField="class_department" HeaderText="所属系部" />
+            <asp:BoundField DataField="class_name" HeaderText="班级" />
+            <asp:BoundField DataField="stu_id" HeaderText="学号" />
+            <asp:BoundField DataField="stu_name" HeaderText="姓名" />
             <asp:TemplateField HeaderText="出勤情况">
                 <ItemTemplate>
                     <asp:RadioButton ID="RadioButton1" runat="server" Text="正常" Checked="true" OnCheckedChanged="rdo_CheckChange" GroupName="g1" AutoPostBack="true" />
@@ -32,8 +36,10 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+      </ContentTemplate>
+    </asp:updatepanel>
 
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT [Class_Department], [Stu_ID], [Stu_Name], [Class_Name] FROM [TabCourses] WHERE (([teacher_id] = @TeacherID) AND ([Course] = @Course) AND ([Current_Week] = @CurrentWeek) AND ([Time] = @Time) AND ([Week] = @Week))">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT [class_department], [stu_id], [stu_name], [class_name] FROM [TabCourses] WHERE (([teacher_id] = @TeacherID) AND ([course] = @Course) AND ([current_week] = @CurrentWeek) AND ([time] = @Time) AND ([week] = @Week))">
         <SelectParameters>
             <asp:SessionParameter Name="TeacherID" SessionField="userID" Type="String" />
             <asp:SessionParameter Name="Course" SessionField="currentCourse" Type="String" />

@@ -243,9 +243,9 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             //鼠标经过时，行背景色变
-            e.Row.Attributes.Add("onmouseover", "this.style.backgroundColor='#E6F5FA'");
+            e.Row.Attributes.Add("onmouseover", "currColor=this.style.backgroundColor;this.style.backgroundColor='#E6F5FA'");
             //鼠标移出时，行背景色变
-            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor='#FFFFFF'");
+            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currColor");
         }
     }
 
