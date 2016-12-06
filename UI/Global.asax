@@ -25,9 +25,18 @@
     void Session_Start(object sender, EventArgs e)
     {
         // 在新会话启动时运行的代码
-        Session["UserID"] = "";
-        Session["Username"] = "";
-        Session["Role"] = "";
+        //测试代码TODO
+        Session["userID"] = "";
+        Session["userName"] = "";
+        Session["role"] = "1";
+        Session["currentWeek"] = "";
+        Session["code"] = "";
+        Session["course"] = "";
+        Session["week"] = "";
+        Session["time"] = "";
+        Session["currentCourse"] = "";
+        Session["homeWork"] = "";
+        Session["weekRange"] = "";
 
         Application.Lock();
         Application["Online"] = (int)Application["Online"] + 1;

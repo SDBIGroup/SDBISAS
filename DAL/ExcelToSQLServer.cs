@@ -28,7 +28,7 @@ namespace DAL
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
                 return false;
             }
@@ -95,7 +95,7 @@ namespace DAL
 
             string fileExtenSion = fileName.Substring(fileName.LastIndexOf(".") + 1);
             //建立连接，根据不同的扩展名，选择不同的引擎
-            if (fileExtenSion.ToLower() == ".xls")
+            if (fileExtenSion.ToLower() == "xls")
             {
                 oleConn = new OleDbConnection(connstr2003);
             }
@@ -166,7 +166,7 @@ namespace DAL
             string SheetName = "";
             for (int i = 0; i < dtExcelSchema.Rows.Count; i++)
             {
-                SheetName = dtExcelSchema.Rows[i]["TANLE_NAME"].ToString();
+                SheetName = dtExcelSchema.Rows[i]["TABLE_NAME"].ToString();
                 SheetNameList.Add(SheetName);
             }
             conn.Close();
@@ -189,8 +189,8 @@ namespace DAL
             da.SelectCommand.CommandTimeout = 600;
 
             ds = new DataSet();
-            //在ds中规定表名为ExcellInfo
-            da.Fill(ds, "ExcellInfo");
+            //在ds中规定表名为ExcelInfo
+            da.Fill(ds, "ExcelInfo");
 
             conn.Close();
             conn.Dispose();
@@ -216,9 +216,8 @@ namespace DAL
             ReadExcelToDataSet(fileName, strSQL);
             if (CheckExcelTableCourses())
             {
-                //TODO...
-                DataTable dt;
-                CoursesTOSQLServer(dt, "TabAllCourses");
+                DataTable dt = SplitString.SplitDT(ds.Tables["ExcelInfo"]);
+                CoursesTOSQLServer(dt, "TabCourses");
                 return "文件导入成功";
             }
             else
@@ -246,7 +245,7 @@ namespace DAL
 
             if (CheckExcelTableCalendar())
             {
-                CalenderToSQLServer(identity);
+                CoursesTOSQLServer(ds.Tables["ExcelInfo"], identity);
                 return "文件导入成功";
             }
             else
@@ -276,7 +275,8 @@ namespace DAL
 
             if (CheckExcelTableTeachers())
             {
-                TeachersToSQLServer(identity);
+                DataTable dt = SplitString.SplitTeacher4DT(ds.Tables["ExcelInfo"]);
+                CoursesTOSQLServer(dt, identity);
                 return "文件导入成功";
             }
             else
@@ -314,44 +314,5 @@ namespace DAL
             return strSplit;
         }
 
-        /// <summary>
-        /// 将校历信息导入到数据库
-        /// 数据来源为全局变量DS集合
-        /// </summary>
-        /// <param name="identity">表名【非工作簿名】</param>
-        public static void CalenderToSQLServer(string identity)
-        {
-            ConnHelper.SQLBulkCopy(ds.Tables["ExcelInfo"], identity);
-        }
-
-        /// <summary>
-        /// 将教师信息导入到数据库
-        /// 数据来源为全局变量DS集合
-        /// </summary>
-        /// <param name="identity">表名【非工作簿名】</param>
-        public static void TeachersToSQLServer(string identity)
-        {
-            string str1 = ConfigurationManager.ConnectionStrings["SdbiAttentionSystemConnectionString"].ConnectionString;
-            SqlConnection conn = new SqlConnection(str1);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            StringBuilder strconn = new StringBuilder();
-            for (int i = 0; i < ds.Tables["ExcelInfo"].Rows.Count; i++)
-            {
-                strconn.Append("insert into " + identity + "(Department,UserID,UserPWD,Sex,Role) values(");
-                for (int j = 0; j <= 4; j++)
-                {
-                    strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[j].ToString() + "',");
-                }
-                strconn.Append("'" + ds.Tables["ExcelInfo"].Rows[i].ItemArray[5] + "')");
-                string str2 = strconn.ToString();
-                cmd.CommandText = str2;
-                cmd.ExecuteNonQuery();
-                strconn.Remove(0, strconn.Length);
-            }
-            conn.Close();
-            conn.Dispose();
-        }
     }
 }
