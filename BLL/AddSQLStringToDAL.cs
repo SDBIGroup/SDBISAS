@@ -235,5 +235,11 @@ namespace BLL
             string strSQL = "select DISTINCT week,time,course,area from TabCourses where " + v1 + "='" + con1 + "' and " + v2 + "='" + con2 + "'";
             return ConnHelper.GetDataTable(strSQL);
         }
+
+        public static DataTable getDt(string sql)
+        {
+            string strSQL = sql;
+            return ConnHelper.GetDataTable(strSQL);
+        }
     }
 }

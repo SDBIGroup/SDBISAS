@@ -15,15 +15,30 @@ public partial class Admin_School_Teachers : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        q();
+        queryByDep();
     }
 
     private void q()
     {
-        string sql = "select * from Test";
-        DataTable dt = BLL.AddSQLStringToDAL.GetDTBySQL(sql);
-        Label2.Text = dt.Columns.Count.ToString();
+        string department = DropDownList1.SelectedValue;
+        string sql = "SELECT department,user_id,user_name,sex,role FROM TabTeachers WHERE department ='" + department + "' ";
+        DataTable dt = BLL.AddSQLStringToDAL.getDt(sql);
         GridView1.DataSource = dt;
-        Response.Write(dt.Columns.Count + "");
+        GridView1.DataBind();
+    }
+
+    private void queryByDep()
+    {
+        string department = DropDownList1.SelectedValue;
+        string sql = "SELECT * FROM TabTeachers WHERE department ='" + department + "' ";
+        DataTable dt = BLL.AddSQLStringToDAL.getDt(sql);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+    }
+
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        GridView1.DataBind();
     }
 }
