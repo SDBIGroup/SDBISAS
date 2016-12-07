@@ -229,5 +229,11 @@ namespace BLL
             string strSQL = "select * from " + Tname + " where " + v1 + "='" + con1 + "' and " + v2 + "='" + con2 + "' and " + v3 + "='" + con3 + "' and " + v4 + "='" + con4 + "' and " + v5 + "='" + con5 + "'";
             return ConnHelper.GetDataTable(strSQL);
         }
+
+        public static DataTable GetDT4Course(string v1, string v2, string con1, string con2)
+        {
+            string strSQL = "select DISTINCT week,time,course,area from TabCourses where " + v1 + "='" + con1 + "' and " + v2 + "='" + con2 + "'";
+            return ConnHelper.GetDataTable(strSQL);
+        }
     }
 }

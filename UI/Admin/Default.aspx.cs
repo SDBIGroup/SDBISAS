@@ -19,14 +19,16 @@ public partial class Admin_Default : System.Web.UI.Page
 
     private void bindData()
     {
-        DataTable dt = AddSQLStringToDAL.GetDTBySQL("TabCourses", "Teacher_id", "Current_Week", Session["userID"].ToString(), Session["currentWeek"].ToString());
+        DataTable dt = AddSQLStringToDAL.GetDT4Course("Teacher_id", "Current_Week", Session["userID"].ToString(), Session["currentWeek"].ToString());
         if (dt.Rows.Count == 0)
         {
             lbTitile.Text = "您本周无授课安排";
         }
         else
         {
-            Repeater1.DataSource = dt;
+            DataView dv = dt.DefaultView;
+            dv.Sort = "week ASC,time";
+            Repeater1.DataSource = dv.ToTable();
             Repeater1.DataBind();
         }
 
@@ -62,7 +64,7 @@ public partial class Admin_Default : System.Web.UI.Page
         Session["currentCourse"] = tb1.Text.Trim();
 
         Label tb2 = e.Item.FindControl("TBweek") as Label;
-        Session["week"] = tb2.Text.Trim();
+        Session["week"] = tb2.Text;
 
         Label tb3 = e.Item.FindControl("TBtime") as Label;
         Session["time"] = tb3.Text.Trim();
