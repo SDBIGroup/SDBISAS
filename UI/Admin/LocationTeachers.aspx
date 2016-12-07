@@ -16,10 +16,21 @@
                 <ControlStyle Width="80px" />
                 <ItemStyle Width="100px" />
             </asp:BoundField>
-            <asp:BoundField DataField="Role" HeaderText="权限">
+            <asp:TemplateField HeaderText="权限">
+                <EditItemTemplate>
+                    <asp:DropDownList ID="dStatus" runat="server">
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                    </asp:DropDownList>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Role") %>'></asp:Label>
+                </ItemTemplate>
                 <ControlStyle Width="50px" />
                 <ItemStyle Width="100px" />
-            </asp:BoundField>
+            </asp:TemplateField>
             <asp:CommandField HeaderText="编辑" ShowEditButton="True">
                 <ItemStyle Width="80px" />
             </asp:CommandField>
