@@ -5,8 +5,8 @@
         .a{
 	width:100%;
 	height:30px;
-    background-color:#333;
-	/*background-image:url(images/99.png);*/
+   
+	background-image:url(images/99.png);
 	}  
           .b {
           float:left;
