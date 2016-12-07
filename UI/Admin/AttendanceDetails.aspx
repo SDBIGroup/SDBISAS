@@ -1,34 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="AttendanceDetails.aspx.cs" Inherits="Admin_AttendanceDetails" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <style type="text/css">
-.a {  float:left;
-      margin-left:15px;
-       }
+        .a {
+            float: left;
+            margin-left: 15px;
+        }
+
         .b {
-        
-        margin:0 auto;
-       }
-        </style>
+            margin: 0 auto;
+        }
+    </style>
     <div class="a">
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-    <asp:Button ID="btnClose" runat="server" Text="Close" OnClick="btnClose_Click" />
-    <asp:Button ID="btnAtten" runat="server" Text="提交" OnClick="btnAtten_Click" />
-   
-    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-   
-    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-    
-    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-    
-    <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
-    
-    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+        <asp:label id="Label1" runat="server"></asp:label>
+        <asp:button id="btnClose" runat="server" text="关闭" onclick="btnClose_Click" />
+        <asp:button id="btnAtten" runat="server" text="提交" onclick="btnAtten_Click" />
+
+        <asp:label id="Label2" runat="server"></asp:label>
+
+        <asp:label id="Label3" runat="server"></asp:label>
+
+        <asp:label id="Label4" runat="server"></asp:label>
+
+        <asp:label id="Label5" runat="server"></asp:label>
+
+        <asp:label id="Label6" runat="server"></asp:label>
     </div>
     <asp:scriptmanager id="ScriptManager1" runat="server">
   </asp:scriptmanager>
     <div class="b">
-    <asp:updatepanel runat="server" id="UpdatePanel1">
+        <asp:updatepanel runat="server" id="UpdatePanel1">
         <ContentTemplate>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AllowSorting="True" OnRowDataBound="GridView1_RowDataBound" DataSourceID="SqlDataSource1">
         <Columns>
@@ -51,7 +52,7 @@
     </asp:updatepanel>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:myConn %>" SelectCommand="SELECT [class_department], [stu_id], [stu_name], [class_name] FROM [TabCourses] WHERE (([teacher_id] = @TeacherID) AND ([course] = @Course) AND ([current_week] = @CurrentWeek) AND ([time] = @Time) AND ([week] = @Week))">
+    <asp:sqldatasource id="SqlDataSource1" runat="server" connectionstring="<%$ ConnectionStrings:myConn %>" selectcommand="SELECT [class_department], [stu_id], [stu_name], [class_name] FROM [TabCourses] WHERE (([teacher_id] = @TeacherID) AND ([course] = @Course) AND ([current_week] = @CurrentWeek) AND ([time] = @Time) AND ([week] = @Week))">
         <SelectParameters>
             <asp:SessionParameter Name="TeacherID" SessionField="userID" Type="String" />
             <asp:SessionParameter Name="Course" SessionField="currentCourse" Type="String" />
@@ -59,7 +60,7 @@
             <asp:SessionParameter Name="Time" SessionField="time" Type="String" />
             <asp:SessionParameter Name="Week" SessionField="week" Type="String" />
         </SelectParameters>
-    </asp:SqlDataSource>
+    </asp:sqldatasource>
 
 </asp:Content>
 
