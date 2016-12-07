@@ -396,4 +396,9 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
     {
         Response.Redirect("Default.aspx");
     }
+
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
