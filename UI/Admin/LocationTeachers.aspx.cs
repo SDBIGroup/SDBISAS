@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BLL;
+using System.Data;
 
 public partial class Admin_LocationTeachers : System.Web.UI.Page
 {
@@ -71,6 +72,21 @@ public partial class Admin_LocationTeachers : System.Web.UI.Page
     {
         GridView1.PageIndex = e.NewPageIndex;
         BindData();
+    }
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        string department = DropDownList1.SelectedValue;
+        string sql = "SELECT * FROM TabTeachers WHERE department ='" + department + "' ";
+        DataTable dt = BLL.AddSQLStringToDAL.getDt(sql);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+    }
+
+    private void queryByDep()
+    {
+        
     }
 
 }

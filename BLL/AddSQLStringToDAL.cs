@@ -281,5 +281,20 @@ namespace BLL
             string strSQL = (v2 == "")? "select * from TabMessage where role='" + v1 + "'" : "select * from TabMessage where role='" + v1 + "' and id not in " + v2;
             return ConnHelper.GetDataTable(strSQL);
         }
+
+        public static DataTable getDt(string sql)
+        {
+            string strSQL = sql;
+            return ConnHelper.GetDataTable(strSQL);
+        }
+
+        public static bool changePWD(string sql)
+        {
+            if (ConnHelper.ExecSQL(sql))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
