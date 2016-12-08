@@ -19,7 +19,7 @@
         
          </style>
 
-    <asp:Label ID="lbTitile" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="lbTitile" runat="server" ></asp:Label>
     <div class="a">
 
     <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">

@@ -17,19 +17,19 @@
          
         </style>
     
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> &nbsp;
+    <asp:Label ID="Label1" runat="server" ></asp:Label> &nbsp;
     <asp:Button ID="btnClose" runat="server" Text="Close" OnClick="btnClose_Click" /> &nbsp;
     <asp:Button ID="btnAtten" runat="server" Text="提交" OnClick="btnAtten_Click" /> &nbsp;
    
-    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label2" runat="server" ></asp:Label>
    
-    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label3" runat="server" ></asp:Label>
     
-    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label4" runat="server" ></asp:Label>
     
-    <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label5" runat="server" ></asp:Label>
     
-    <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label6" runat="server" ></asp:Label>
    
     <asp:scriptmanager id="ScriptManager1" runat="server">
   </asp:scriptmanager>

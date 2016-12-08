@@ -241,5 +241,14 @@ namespace BLL
             string strSQL = sql;
             return ConnHelper.GetDataTable(strSQL);
         }
+
+        public static bool changePWD(string sql)
+        {
+            if (ConnHelper.ExecSQL(sql))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -10,13 +10,14 @@
 	}
        .b {
           float:left;
-          margin-left:250px;
+          margin-left:50px;
          
        }
       .c{
 	font-size:16px;
 	color:#CCC;
     margin-left:15px;
+    line-height:30px;
 	
 
        }
@@ -27,6 +28,9 @@
        .e {
             margin-left:40px;
        }
+        .f {
+            display:none;
+        }
 </style>
         <div class="a"><span class="c">教师导入</span></div>
         <div class="b">
@@ -53,7 +57,8 @@
     <div class="a"><span class="c">各系导入</span></div>
    <br /> 
       <div class="b">
-    &nbsp; <asp:DropDownList runat="server" ID="ddlDepartmentName" OnSelectedIndexChanged="ddlDepartmentName_SelectedIndexChanged">
+    &nbsp;<asp:Label ID="Label4" runat="server" Text="选择导入系部" ></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList runat="server" ID="ddlDepartmentName" OnSelectedIndexChanged="ddlDepartmentName_SelectedIndexChanged">
         <asp:ListItem>教务处</asp:ListItem>
         <asp:ListItem>信息工程系</asp:ListItem>
         <asp:ListItem>会计系</asp:ListItem>
@@ -86,20 +91,20 @@
     <br />
         </div>
      <br />
-    <asp:Label ID="lbMessage1" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="lbMessage2" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="lbMessage3" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="lbMessage4" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="lbMessage5" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="lbMessage6" runat="server" Text="Label"></asp:Label>
-    <asp:Label ID="lbMessage7" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="lbMessage1" runat="server" ></asp:Label>
+    <asp:Label ID="lbMessage2" runat="server" ></asp:Label>
+    <asp:Label ID="lbMessage3" runat="server"></asp:Label>
+    <asp:Label ID="lbMessage4" runat="server" ></asp:Label>
+    <asp:Label ID="lbMessage5" runat="server" ></asp:Label>
+    <asp:Label ID="lbMessage6" runat="server" ></asp:Label>
+    <asp:Label ID="lbMessage7" runat="server" ></asp:Label>
     <br />
     <div class="a"><span class="c">数据分析</span></div>
      <br />
     <div class="e"><asp:Button ID="btnClearPreData" runat="server" Text="清除入库数据" /></div>
     <br/>
-    <div class="e"><asp:Button ID="btnPreOperation" runat="server" Text="Button" OnClick="btnPreOperation_Click" /></div>
+    <div class="f"><asp:Button ID="btnPreOperation" runat="server" Text="Button" OnClick="btnPreOperation_Click" /></div>
     <br/>
-    <div class="e"><asp:Button ID="btnTeacherAttendance" runat="server" Text="Button" OnClick="btnTeacherAttendance_Click" /></div>
+    <div class="f"><asp:Button ID="btnTeacherAttendance" runat="server" Text="Button" OnClick="btnTeacherAttendance_Click" /></div>
 </asp:Content>
 
