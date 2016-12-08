@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="GetMessage.aspx.cs" Inherits="Admin_GetMessage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="GetMessage.aspx.cs" Inherits="Admin_GetMessage"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Repeater ID="Repeater1" runat="server">
+    <asp:Repeater ID="Repeater1" OnItemCommand="Repeater1_ItemCommand" runat="server">
         <HeaderTemplate>
             <!-- 显示头部 -->
             <table>
@@ -28,6 +28,7 @@
                 </td>
                 <td>
                     <asp:Button ID="Button1" runat="server" Text="已读" />
+                    <asp:Label ID="msgID" runat="server" Visible="false" Text='<%#DataBinder.Eval(Container.DataItem,"id") %>'></asp:Label>
                 </td>
             </tr>
         </ItemTemplate>

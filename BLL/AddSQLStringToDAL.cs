@@ -26,6 +26,17 @@ namespace BLL
         }
 
         /// <summary>
+        /// 发布通知
+        /// </summary>
+        /// <param name="text">数据</param>
+        /// <param name="v2">权限</param>
+        public static bool InsertMsgRow(string text, string v2)
+        {
+            string strSQL = "insert into TabMessage(message,role) values('" + text + "','" + v2 + "')";
+            return ConnHelper.ExecuteNoneQueryOperation(strSQL);
+        }
+
+        /// <summary>
         /// 查询指定表中的所有符合条件的数据
         /// 接受一个约束条件
         /// </summary>
@@ -267,7 +278,7 @@ namespace BLL
         /// <returns></returns>
         public static DataTable GetDT4Message(string v1, string v2)
         {
-            string strSQL = (v2 == "")? "select * from TabMessage where role='" + v1 + "'" : "select * from TabMessage where role='" + v1 + "' id in " + v2;
+            string strSQL = (v2 == "")? "select * from TabMessage where role='" + v1 + "'" : "select * from TabMessage where role='" + v1 + "' and id not in " + v2;
             return ConnHelper.GetDataTable(strSQL);
         }
     }

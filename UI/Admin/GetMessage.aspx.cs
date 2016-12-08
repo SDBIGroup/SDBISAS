@@ -11,7 +11,10 @@ public partial class Admin_GetMessage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        bindData();
+        if (!IsPostBack)
+        {
+            bindData();
+        }
     }
 
     private void bindData()
@@ -28,5 +31,15 @@ public partial class Admin_GetMessage : System.Web.UI.Page
         }
         Repeater1.DataSource = AddSQLStringToDAL.GetDT4Message(Session["currentRole"].ToString(), reads);
         Repeater1.DataBind();
+    }
+
+    //已读按钮的点击
+    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        Label msgID = e.Item.FindControl("msgID") as Label;
+        string readMsgTemp = Session["readMsg"].ToString() == "" ? msgID.Text : Session["readMsg"].ToString() + " " + msgID.Text;
+        AddSQLStringToDAL.UpdateRows("TabTeachers", "read_msg", readMsgTemp, "user_id", Session["userID"].ToString());
+        Session["readMsg"] = readMsgTemp;
+        bindData();
     }
 }
