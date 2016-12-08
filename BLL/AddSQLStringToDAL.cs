@@ -258,5 +258,17 @@ namespace BLL
             string strSQL = "update " + v1 + " set " + v2 + "='" + v3 + "' where " + v4 + "='" + c4 + "' and " + v5 + "='" + c5 + "' and " + v6 + "='" + c6 + "' and " + v7 + "='" + c7 + "' and " + v8 + "='" + c8 + "'";
             return ConnHelper.ExecuteNoneQueryOperation(strSQL);
         }
+
+        /// <summary>
+        /// 获取未读消息
+        /// </summary>
+        /// <param name="v1">权限</param>
+        /// <param name="v2">构造字段</param>
+        /// <returns></returns>
+        public static DataTable GetDT4Message(string v1, string v2)
+        {
+            string strSQL = (v2 == "")? "select * from TabMessage where role='" + v1 + "'" : "select * from TabMessage where role='" + v1 + "' id in " + v2;
+            return ConnHelper.GetDataTable(strSQL);
+        }
     }
 }

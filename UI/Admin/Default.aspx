@@ -45,6 +45,40 @@
     </asp:Repeater>
     <asp:Label ID="lbWork" runat="server" Text="Label"></asp:Label>
     <br />
-    <asp:Repeater ID="Repeater2" runat="server"></asp:Repeater>
+    <asp:Repeater ID="Repeater2" runat="server">
+         <HeaderTemplate>
+            <!-- 显示头部 -->
+            <table class="movies">
+                <!-- table头部声明-->
+                <tr>
+                    <th>序号</th>
+                    <th>详细信息</th>
+                    <th>操作</th>
+                </tr>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <!-- 数据行 -->
+            <tr>
+                <td>
+                    <%--自动编号--%>
+                    <asp:Label ID="Label1" runat="server" Text="<%#Container.ItemIndex+1 %>"></asp:Label>
+                </td>
+                <td>
+                   <asp:Label ID="Label2" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:Label>
+                </td>
+                <td>
+                    <asp:Button ID="Button2" runat="server" Text="批改作业" />
+                </td>
+            </tr>
+        </ItemTemplate>
+        <FooterTemplate>
+            <!-- 脚注行 -->
+            </table>   
+            <!-- table尾 -->
+        </FooterTemplate>
+    </asp:Repeater>
 </asp:Content>
 

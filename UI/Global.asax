@@ -37,6 +37,8 @@
         Session["currentCourse"] = "";
         Session["homeWork"] = "";
         Session["weekRange"] = "";
+        Session["readMsg"] = "";
+        Session["currentRole"] = "";
 
         Application.Lock();
         Application["Online"] = (int)Application["Online"] + 1;

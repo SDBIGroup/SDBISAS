@@ -25,6 +25,7 @@ public partial class Login : System.Web.UI.Page
                 Session["userID"] = value_1.Text.Trim();
                 //保存用户数据
                 Session["userName"] = dt.Rows[0]["User_Name"].ToString(); //去一下空格
+                Session["readMsg"] = dt.Rows[0]["read_msg"].ToString();
                 CurrentWeek();
 
                 switch (role)
@@ -32,21 +33,26 @@ public partial class Login : System.Web.UI.Page
                     case "1":
                         //页面跳转
                         Session["role"] = "系统管理员";
+                        Session["currentRole"] = "1";
                         Response.Redirect("./Admin/Default.aspx");
+                        //Response.Redirect("./Admin/GetMessage.aspx");
                         break;
                     case "2":
                         //页面跳转
                         Session["role"] = "院系领导";
+                        Session["currentRole"] = "2";
                         Response.Redirect("./Leader/Default.aspx");
                         break;
                     case "3":
                         //页面跳转
                         Session["role"] = "辅导员";
+                        Session["currentRole"] = "3";
                         Response.Redirect("./Secretary/Default.aspx");
                         break;
                     case "4":
                         //页面跳转
                         Session["role"] = "教师";
+                        Session["currentRole"] = "4";
                         Response.Redirect("./Teacher/Default.aspx");
                         break;
                     default:
