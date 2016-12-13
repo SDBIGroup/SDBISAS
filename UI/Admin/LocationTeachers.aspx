@@ -8,7 +8,9 @@
              height: 600px;
          }
          </style>
-    按照系部查询<asp:DropDownList ID="DropDownList1" runat="server">
+    <asp:label runat="server" text="请选择查询的部门"></asp:label>
+    &nbsp;&nbsp;
+    <asp:DropDownList ID="DropDownList1" runat="server">
         <asp:ListItem>教务处</asp:ListItem>
         <asp:ListItem>会计系</asp:ListItem>
         <asp:ListItem>经济管理系</asp:ListItem>
@@ -16,7 +18,8 @@
         <asp:ListItem>机械工程系</asp:ListItem>
         <asp:ListItem>信息工程系</asp:ListItem>
     </asp:DropDownList>
-    <asp:Button ID="Button1" runat="server" Text="查询" OnClick="Button1_Click" />
+    &nbsp;
+    <asp:Button ID="Button1" runat="server" Text=" 查询 " OnClick="Button1_Click" />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" GridLines="Horizontal" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px">
         <AlternatingRowStyle BackColor="#F7F7F7" />
         <Columns>
