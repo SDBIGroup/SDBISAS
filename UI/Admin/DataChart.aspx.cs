@@ -77,7 +77,7 @@ public partial class Admin_DataChart : System.Web.UI.Page
     {
         if (dep == "")
         {
-            string strSQL = "SELECT * FROM TabStudentAttendance";
+            string strSQL = "SELECT * FROM     TabStudentAttendance";
             return AddSQLStringToDAL.getDt(strSQL);
         }
         else
