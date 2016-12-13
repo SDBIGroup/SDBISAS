@@ -363,8 +363,10 @@ public partial class Admin_AttendanceDetails : System.Web.UI.Page
         }
 
         //更新老师状态为已考勤
-        //TODO
-        if (true)
+        bool isUpdate = AddSQLStringToDAL.UpdateRows("TabCourses", "is_attendance", "已考勤", "teacher_id", "Current_Week", "Course",
+            "Week", "Time", Session["userID"].ToString(), Session["currentWeek"].ToString(), Session["currentCourse"].ToString(),
+            Session["week"].ToString(), Session["time"].ToString());
+        if (isUpdate)
         {
             if (strLate.ToString() == "迟到名单：")
                 strLate.Append("无");

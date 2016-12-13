@@ -26,6 +26,17 @@ namespace BLL
         }
 
         /// <summary>
+        /// 发布通知
+        /// </summary>
+        /// <param name="text">数据</param>
+        /// <param name="v2">权限</param>
+        public static bool InsertMsgRow(string text, string v2)
+        {
+            string strSQL = "insert into TabMessage(message,role) values('" + text + "','" + v2 + "')";
+            return ConnHelper.ExecuteNoneQueryOperation(strSQL);
+        }
+
+        /// <summary>
         /// 查询指定表中的所有符合条件的数据
         /// 接受一个约束条件
         /// </summary>
@@ -232,7 +243,42 @@ namespace BLL
 
         public static DataTable GetDT4Course(string v1, string v2, string con1, string con2)
         {
-            string strSQL = "select DISTINCT week,time,course,area from TabCourses where " + v1 + "='" + con1 + "' and " + v2 + "='" + con2 + "'";
+            string strSQL = "select DISTINCT week,time,course,area from TabCourses where is_attendance='未考勤' and " + v1 + "='" + con1 + "' and " + v2 + "='" + con2 + "'";
+            return ConnHelper.GetDataTable(strSQL);
+        }
+
+        /// <summary>
+        /// 更新数据表
+        /// 更新一个字段，有一个条件
+        /// </summary>
+        /// <param name="v1">表名</param>
+        /// <param name="v2">更新的字段</param>
+        /// <param name="v3">更新后的值</param>
+        /// <param name="v4">约束名1</param>
+        /// <param name="v5">约束名2</param>
+        /// <param name="v6">约束名3</param>
+        /// <param name="v7">约束名4</param>
+        /// <param name="v8">约束名5</param>
+        /// <param name="c4">约束值1</param>
+        /// <param name="c5">约束值2</param>
+        /// <param name="c6">约束值3</param>
+        /// <param name="c7">约束值4</param>
+        /// <param name="c8">约束值5</param>
+        public static bool UpdateRows(string v1, string v2, string v3, string v4, string v5, string v6, string v7, string v8, string c4, string c5, string c6, string c7, string c8)
+        {
+            string strSQL = "update " + v1 + " set " + v2 + "='" + v3 + "' where " + v4 + "='" + c4 + "' and " + v5 + "='" + c5 + "' and " + v6 + "='" + c6 + "' and " + v7 + "='" + c7 + "' and " + v8 + "='" + c8 + "'";
+            return ConnHelper.ExecuteNoneQueryOperation(strSQL);
+        }
+
+        /// <summary>
+        /// 获取未读消息
+        /// </summary>
+        /// <param name="v1">权限</param>
+        /// <param name="v2">构造字段</param>
+        /// <returns></returns>
+        public static DataTable GetDT4Message(string v1, string v2)
+        {
+            string strSQL = (v2 == "")? "select * from TabMessage where role='" + v1 + "'" : "select * from TabMessage where role='" + v1 + "' and id not in " + v2;
             return ConnHelper.GetDataTable(strSQL);
         }
 
