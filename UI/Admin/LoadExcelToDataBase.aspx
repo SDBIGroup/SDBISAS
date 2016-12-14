@@ -5,8 +5,8 @@
 .a{
 	width:100%;
 	height:30px;
-    background-color:#333;
-	/*background-image:url(images/99.png);*/
+    
+	background:url(../images/99.png) ;
 	}
        .b {
           float:left;
@@ -15,7 +15,7 @@
        }
       .c{
 	font-size:16px;
-	color:#CCC;
+
     margin-left:15px;
     line-height:30px;
 	

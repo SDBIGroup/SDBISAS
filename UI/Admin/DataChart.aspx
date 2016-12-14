@@ -3,10 +3,23 @@
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <br />
+     <style type="text/css">
+         .a {
+         margin-left:30px;
+
+         }
+         .b {
+         background-color:greenyellow;
+        
+         }
+         </style>
+
+    <div class="b">
     截至目前，各系旷课人数
-    <br />
-    <asp:Chart ID="Chart1" runat="server" Width="800px" Height="200px">
+        </div>
+   
+    <br /><div class="a">
+    <asp:Chart ID="Chart1" runat="server" Width="1000px" Height="230px">
         <Series>
             <asp:Series Name="Series1">
             </asp:Series>
@@ -16,11 +29,14 @@
             </asp:ChartArea>
         </ChartAreas>
     </asp:Chart>
+     </div>
     <br />
     <br />
+    <div class="b">
     截至目前，各系迟到人数
-    <br />
-    <asp:Chart ID="Chart2" runat="server" Width="800px" Height="200px">
+      </div> 
+    <br /> <div class="a">
+    <asp:Chart ID="Chart2" runat="server" Width="1000px" Height="230px">
         <Series>
             <asp:Series Name="Series1">
             </asp:Series>
@@ -30,5 +46,6 @@
             </asp:ChartArea>
         </ChartAreas>
     </asp:Chart>
+         </div>
 </asp:Content>
 

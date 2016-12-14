@@ -6,7 +6,7 @@
          .a {
              margin: 0 auto;
              width: 100%;
-             height: 500px;
+             height: 300px;
          }
          .b{ width:400px;}
          .c{ width:800px;}
@@ -64,6 +64,8 @@
     </div>
     <asp:Label ID="lbWork" runat="server" Text="Label"></asp:Label>
     <br />
+
+
     <asp:Repeater ID="Repeater2" runat="server">
          <HeaderTemplate>
             <!-- 显示头部 -->
@@ -78,17 +80,17 @@
         <ItemTemplate>
             <!-- 数据行 -->
             <tr>
-                <td>
+                <td class="b">
                     <%--自动编号--%>
                     <asp:Label ID="Label1" runat="server" Text="<%#Container.ItemIndex+1 %>"></asp:Label>
                 </td>
-                <td>
+                <td class="c">
                    <asp:Label ID="Label2" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Week") %>'></asp:Label>
                     <asp:Label ID="Label3" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Time") %>'></asp:Label>
                     <asp:Label ID="Label4" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Course") %>'></asp:Label>
                     <asp:Label ID="Label5" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Area") %>'></asp:Label>
                 </td>
-                <td>
+                <td class="d">
                     <asp:Button ID="Button2" runat="server" Text="批改作业" />
                 </td>
             </tr>

@@ -9,7 +9,6 @@
         .b {
             margin-left:300px;
         }
-
        </style>
     <div class="a">
     <asp:Label ID="Label2" runat="server" Text="原密码"></asp:Label>
