@@ -3,15 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <style type="text/css">
         .a {
-        margin-left:200px;
+        margin-left:20px;
 
         }
         .b {
        width: 100%;
         height:550px;
         margin:0 auto;
+       
+        }
+        .c {
+            background-image: url(../images/bg4.jpg);
+             width:500px;
+             height:350px;
+            margin-left:300px;
         }
     </style>
+    <div class="c">
     <div class="b">
     <div class="a">
          <br />
@@ -50,6 +58,7 @@
     <div class="a">
     <asp:Button ID="Button1" runat="server" Text="添加账户" OnClick="Button1_Click" />
     </div>
+        </div>
         </div>
 </asp:Content>
 

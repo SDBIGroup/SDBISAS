@@ -3,13 +3,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <style type="text/css">
         .a {
-        margin-left:200px;
+        margin-left:20px;
 
         }
         .b {
+            margin-left:30px;
+        }
+        .c { background-image:url(../images/bg4.jpg);
+            width:500px;
             margin-left:300px;
         }
        </style>
+    <div class="c">
     <div class="a">
     <asp:Label ID="Label2" runat="server" Text="原密码"></asp:Label>
         &nbsp;
@@ -36,6 +41,7 @@
     <asp:Button ID="Button1" runat="server" Text=" 确认 " OnClick="Button1_Click" />
         <br/>
           <asp:Label ID="Label7" runat="server"></asp:Label>
+        </div>
         </div>
 </asp:Content>
 

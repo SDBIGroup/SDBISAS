@@ -47,4 +47,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Label1.Text = "当前在线人数：" + Application["Online"].ToString() + "人";
 
     }
+
+   
 }
