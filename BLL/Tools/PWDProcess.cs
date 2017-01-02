@@ -11,7 +11,7 @@ namespace BLL.Tools
     public class PWDProcess
     {
         /// <summary>
-        /// 字符串加密函数  
+        /// 字符串MD5加密函数  
         /// </summary>
         /// <param name="strInput">输入被加密的字符串</param>  
         /// <returns>加密后的字符串</returns>  
