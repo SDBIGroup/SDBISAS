@@ -206,4 +206,14 @@ public partial class Admin_LoadExcelToDataBase : System.Web.UI.Page
             return null;
         }
     }
+
+    protected void btnPreOperation_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnTeacherAttendance_Click(object sender, EventArgs e)
+    {
+
+    }
 }

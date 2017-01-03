@@ -9,7 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 
-public partial class Admin_AttendanceDetails : System.Web.UI.Page
+public partial class Leader_AttendanceDetails : System.Web.UI.Page
 {
     private Color c;
 

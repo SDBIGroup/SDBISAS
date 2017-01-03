@@ -10,7 +10,53 @@ namespace DAL
 {
     public class SplitString
     {
+
         public static DataTable SplitDT(DataTable oldDt)
+        {
+            DataTable dt = SplitDT1(oldDt);
+            return SplitDT3(dt);
+        }
+
+        private static DataTable SplitDT3(DataTable dt)
+        {
+            DataTable dt1 = dt.Clone();
+            int mm = 0;
+            for (int pos = 0; pos < dt.Rows.Count; pos++)
+            {
+                string current_week = dt.Rows[pos]["current_week"].ToString();
+                string week = dt.Rows[pos]["week"].ToString();
+                string time = dt.Rows[pos]["time"].ToString();
+                string[] current_week1 = current_week.Split(' ');
+                string[] week1 = week.Split(' ');
+                string[] time1 = time.Split(' ');
+                int all = (current_week1.Length - 1) * (week1.Length - 1);
+
+                // 9 10 11 12 13  
+                // 星期一 星期三 星期四
+                for (int i = 0; i < all; i++)
+                {
+                    DataRow dr = dt1.NewRow();
+                    for (int m = 0; m < dt.Columns.Count; m++)
+                    {
+                        dr[m] = dt.Rows[pos][m];
+                    }
+                    dt1.Rows.Add(dr);
+                }
+
+                for (int m = 1; m < week1.Length; m++)
+                {
+                    for (int n = 1; n < current_week1.Length; n++)
+                    {
+                        dt1.Rows[mm]["current_week"] = current_week1[n];
+                        dt1.Rows[mm]["week"] = week1[m];
+                        dt1.Rows[mm]["time"] = time1[m];
+                        mm++;
+                    }
+                }
+            }
+            return dt1;
+        }
+        public static DataTable SplitDT1(DataTable oldDt)
         {
             DataTable newDt = new DataTable();
 
